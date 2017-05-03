@@ -1,0 +1,97 @@
+﻿@model HaberPortal.Models.EssayModel
+
+@{
+    ViewBag.Title = "AddEssay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@using (Html.BeginForm("AddEditorContent", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="container">
+            <div class="col-lg-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <div class="form-group">
+                            <label> Başlık </label>
+                            @Html.ValidationMessageFor(x => x.Baslik)
+                            @Html.TextBoxFor(m => m.Baslik, new { @class = "form-control", placeholder = "Başlık Giriniz..." })
+
+                            <label> Açıklama </label>
+                            @Html.ValidationMessageFor(x => x.Aciklama)
+                            @Html.TextAreaFor(m => m.Aciklama, new { @class = "form-control", placeholder = "Açıklama Giriniz...", rows = "5" })
+                          
+                            <label> Kategori </label>
+                            @Html.DropDownListFor(m => m.KategoriId, Model.DropDownListKategori, new { @class = "form-control select2", style = "width: 100%" })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <div class="form-group">
+
+                            <label>Kaynak</label>
+                            @Html.DropDownListFor(m => m.KaynakId, Model.DropDownListKaynak, new { @class = "form-control select2", style = "width: 100%" })
+
+                            <label>Site</label>
+                            @Html.DropDownListFor(m => m.SiteId, Model.DropDownListSite, new { @class = "form-control select2", style = "width: 100%" })
+
+                            <label>Resim</label>
+                            @Html.ValidationMessageFor(x => x.HaberResimFile)
+                            @Html.TextBoxFor(x => x.HaberResimFile, new { type = "file", id = "exampleInputFile" })
+                          
+                            
+
+                            <label>Banner</label>
+                            @Html.DropDownListFor(m => m.BannerId,Model.DropDownListBanner, new { @class = "form-control select2", style = "width: 100%" })
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <div class="form-group">
+                            <label for="hastag" class="kuzubaslik">#Hastag</label>
+                            @Html.ValidationMessageFor(x => x.Hastags)
+                            @Html.TextBoxFor(m => m.Hastags, new { @class = "search-query form-control", size = "100", id = "hastag", @data_role = "tagsinput" })
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="container">
+            <div class="col-lg-12">
+
+
+                <div class="form-group">
+                    @Html.ValidationMessageFor(x => x.EssayContent)
+                    @Html.TextAreaFor(model => model.EssayContent, new {id = "summernote", rows = "10", @class = "form-control"})
+
+                    <button type="submit" class="btn btn-success" style="float: right">Kaydet</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,11 @@
+﻿#backPic {
+    background-image: url("../Images/back_pick_2.jpg");
+    background-size: 100%;
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+}

@@ -1,0 +1,75 @@
+﻿@model HaberPortal.Models.Login
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/login.css" />
+
+    @*  Backlinkler kaldırılacak locale çekilecek*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <title>Login</title>
+
+</head>
+<body id="backPic">
+
+    <div class="login-box">
+        <div class="login-logo">
+            <b style="color: darkmagenta"></b>
+        </div>
+
+        <div class="login-box-body" style="border: 1px solid darkgoldenrod">
+
+            @if (@ViewBag.result == "failed")
+            {
+                <p class="login-box-msg" style="color: red">@ViewBag.message</p>
+            }
+            else
+            {
+                <p class="login-box-msg" style="color: green">@ViewBag.message</p>
+            }
+
+            @using (Html.BeginForm("CheckUser", "Home", FormMethod.Post))
+            {
+                <div class="form-group has-feedback">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+
+                <div class="form-group has-feedback">
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+
+
+                    <div class="social-auth-links text-right">
+                        <button class="btn bg-green" type="submit">Giriş Yap</button>
+                    </div>
+            }
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <a href="#">Şifremi Unuttum</a>
+                </div>
+
+                <div class="col-md-6">
+                    <a href="#" class="text-center" style="float:right">Kayıt Ol</a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+</body>
+</html>
