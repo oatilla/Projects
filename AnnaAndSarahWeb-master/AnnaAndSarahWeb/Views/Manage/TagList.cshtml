@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AnnaAndSarahWeb.Models.tblTag>
+
+@{
+    ViewBag.Title = "TagList";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New Tag", "AddTags")
+</p>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Hover Data Table</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Tag Name
+                            </th>
+                            <th>Duzenle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TagName)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "AddTags", new { id = item.TagId })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>
+                                Tag Name
+                            </th>
+                            <th>Duzenle</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div><!-- /.box-body -->
+        </div>
+    </div><!-- /.col -->
+</div>

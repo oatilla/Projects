@@ -1,0 +1,203 @@
+﻿@model AnnaAndSarahWeb.Models.ProductPage
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/AltSayfa.cshtml";
+}
+
+<section role="main" class="main main-category" id="main">
+    <div id="category" class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div id="current-category-product">
+                    <div class="current-product-figure psre">
+                        <h2 class="breeserif current-product-name style">
+                            @Model.Category.CatName
+                        </h2>
+                        <img src="~/images/Categories/@Model.Category.Image" alt="Raw Almonds" class="current-product-img img-responsive center-block" />
+                        <ul class="current-product-badges list-inline list-unstyled clearfix">
+                            <li class="st1 col-xs-3">
+                                <div>@Model.ProductDetail.Column1_Value</div>
+                                <h4>@Model.ProductDetail.Column1_Header</h4>
+                            </li>
+                            <li class="st2 col-xs-3">
+                                <div>@Model.ProductDetail.Column2_Value</div>
+                                <h4>@Model.ProductDetail.Column2_Header</h4>
+                            </li>
+                            <li class="st3 col-xs-3">
+                                <div>@Model.ProductDetail.Column3_Value</div>
+                                <h4>@Model.ProductDetail.Column3_Header</h4>
+                            </li>
+                            <li class="st4 col-xs-3">
+                                <div>@Model.ProductDetail.Column4_Value</div>
+                                <h4>@Model.ProductDetail.Column4_Header</h4>
+                            </li>
+                        </ul>
+                        <div class="current-product-details clearfix">
+                            <div class="text-right clearfix"><span class="breeserif fs30 pull-left">In Stock: @Model.ProductDetail.Stock</span><a href="@Model.ProductDetail.Link" class="btn btn-success breeserif"><span class="glyphicon glyphicon-shopping-cart"></span> Buy From Amazon</a></div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h3 class="breeserif fs24">Ingredients:</h3>
+                                    <p>@Model.ProductDetail.Ingredients</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h3 class="breeserif fs24">Country of origin:</h3>
+                                    <p>@Model.ProductDetail.Country</p>
+                                </div>
+                            </div>
+                            <span class="label label-info">Resealable Bag</span>
+                            <span class="label label-info">Certified Organic</span>
+                            <span class="label label-warning">Lightly Salted</span>
+                            <div>
+                                <h3 class="breeserif fs24">Nutrition Facts:</h3>
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr class="active">
+                                            <th><strong>Serving Size</strong></th>
+                                            <th></th>
+                                            <th>@Model.ProductDetail.ServingSize</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="info">
+                                            <th>Amount Per Serving</th>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th>Calories</th>
+                                            <td><strong>@Model.ProductDetail.Calories</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <td>Calories from fat</td>
+                                            <td>@Model.ProductDetail.Calories_from_fat</td>
+                                        </tr>
+                                        <tr class="info">
+                                            <th>% Daily Values</th>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total Fat</th>
+                                            <th>@Model.ProductDetail.Total_Fat</th>
+                                            <th>@Model.ProductDetail.Total_Fat_Yuzde %</th>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Saturated Fat: <strong> @Model.ProductDetail.Saturated_Fat</strong></td>
+                                            <td>@Model.ProductDetail.Saturated_Fat_Yuzde %</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Trans Fat: @Model.ProductDetail.Trans_Fat</td>
+                                            <td>@Model.ProductDetail.Trans_Fat_Yuzde %</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Cholesterol</th>
+                                            <th>@Model.ProductDetail.Cholesterol</th>
+                                            <th>@Model.ProductDetail.Cholesterol_Yuzde %</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Sodium</th>
+                                            <th>@Model.ProductDetail.Sodium</th>
+                                            <th>@Model.ProductDetail.Sodium_Yuzde %</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Total Carbonhydrate</th>
+                                            <th>@Model.ProductDetail.Total_Carbonhydrate</th>
+                                            <th>@Model.ProductDetail.Total_Carbonhydrate_Yuzde %</th>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Dietary Fiber: @Model.ProductDetail.Dietary_Fiber</td>
+                                            <td>@Model.ProductDetail.Dietary_Fiber_Yuzde %</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Sugar: @Model.ProductDetail.Sugar</td>
+                                            <td>@Model.ProductDetail.Sugar_Yuzde %</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Protein</th>
+                                            <th>@Model.ProductDetail.Protein</th>
+                                            <th>@Model.ProductDetail.Protein_Yuzde %</th>
+                                        </tr>
+                                        @*<tr class="success">
+                                            <th>Vitamin A</th>
+                                            <th></th>
+                                            <th>@Model.ProductDetail.VitaminA_Yuzde %</th>
+                                        </tr>
+                                        <tr class="success">
+                                            <th>Vitamin C</th>
+                                            <th></th>
+                                            <th>@ViewBag.VitaminC_Yuzde %</th>
+                                        </tr>
+                                        <tr class="success">
+                                            <th>Calcium</th>
+                                            <th></th>
+                                            <th>@ViewBag.Calcium_Yuzde %</th>
+                                        </tr>
+                                        <tr class="success">
+                                            <th>Iron</th>
+                                            <th></th>
+                                            <th>@ViewBag.Iron_Yuzde %</th>
+                                        </tr>*@
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a id="show-more-detail" title="Show more detail" href="#show-more-detail" class="breeserif"><span>Show More</span></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h2 class="breeserif current-product-name">Varieties</h2>
+                <section>
+                    <div id="product-category-menu" class="wh-4">
+                        <ul class="list-unstyled list-inline clearfix">
+                            @foreach (var item in Model.CategoryListSameCategory)
+                            {
+                                <li>
+                                    <a href="~/Home/Product/@item.LinkUrl" style="background-image:url('../../images/Categories/@item.Image')">
+                                        <span>@item.CatName</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="parent-categorys">
+    <div class="container">
+        <div class="clearfix">
+            <h2 class="breeserif current-product-name">All Nuts</h2>
+            <div id="product-category-menu">
+                <ul class="list-unstyled list-inline clearfix">
+                    @foreach (var item in Model.CategoryListParentCategory)
+                    {
+                        <li>
+                            <div style="background-image:url('../../images/Categories/@item.Image')">
+                                <span><a href="#">@item.CatName</a></span>
+                                <ul>
+                                    @foreach (var itemChild in Model.CategoryListParentChildCategory)
+                                    {
+                                        if (itemChild.CMainId == item.Cid)
+                                        {
+                                            <li><a href="~/Home/Product/@itemChild.LinkUrl">@itemChild.CatName</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+

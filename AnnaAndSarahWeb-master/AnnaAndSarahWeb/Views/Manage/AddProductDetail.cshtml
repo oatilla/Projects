@@ -1,0 +1,297 @@
+﻿@model AnnaAndSarahWeb.Models.ProductDetailPage
+@{
+    ViewBag.Title = "AddProductDetail";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@using (Html.BeginForm("AddProductDetail", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <b>
+                    @ViewBag.Urun
+                </b>
+                Adlı Ürünü Güncelle
+            </h3>
+        </div><!-- /.box-header -->
+        <div class="box box-danger">
+            <div class="box-body">
+                <div class="row">
+                    @*<div class="col-xs-3">
+                        <b>
+                            
+                        </b>
+
+                    </div>*@
+                    <div class="col-xs-3">
+                        <b>
+                            Stok Miktarı
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Stock, new { htmlAttributes = new { @class = "form-control", @placeholder = "Stok miktarı" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Amazon Linki
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Link, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ürüne tıklandığında gelecek amazon sayfası linki" } })
+                    </div>
+                    <div class="col-xs-5">
+                        <b>
+                            Serving Size
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.ServingSize, new { htmlAttributes = new { @class = "form-control", @placeholder = "Serving Size" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Country
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Country, new { htmlAttributes = new { @class = "form-control", @placeholder = "üretim Yeri/Ülkesi" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Ingredients
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Ingredients, new { htmlAttributes = new { @class = "form-control", @placeholder = "İçindekiler Kısmı, Virgül eklenerek Giriş yapılması lazım" } })
+                    </div>
+                    <div class="col-xs-5">
+                        <b>
+                            Vitamin A Yuzde
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.VitaminA_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Vitamin A Yuzde Değeri Girilmeli" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Calories
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Calories, new { htmlAttributes = new { @class = "form-control", @placeholder = "Calories" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Calories From Fat
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Calories_from_fat, new { htmlAttributes = new { @class = "form-control", @placeholder = "Calories from fat" } })
+                    </div>
+                    <div class="col-xs-5">
+                        <b>
+                            Vitamin C Yuzde
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.VitaminC_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Vitamin C Yuzde Değeri Girilmeli" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Saturated Fat
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Saturated_Fat, new { htmlAttributes = new { @class = "form-control", @placeholder = "Calories" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Saturated Fat %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Saturated_Fat_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Calories from fat" } })
+                    </div>
+                    <div class="col-xs-5">
+                        <b>
+                            Iron %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Iron_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Iron % Değerleri Girilmeli" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Total Fat
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Total_Fat, new { htmlAttributes = new { @class = "form-control", @placeholder = "Total Fat" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Total Fat %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Total_Fat_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Calories from fat" } })
+                    </div>
+                    <div class="col-xs-5">
+                        <b>
+                            Calcium Yuzde
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Calcium_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Calcium Yüzde Değerlerini giriniz" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Trans Fat
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Trans_Fat, new { htmlAttributes = new { @class = "form-control", @placeholder = "Trans Fat" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Trans Fat %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Trans_Fat_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Calories from fat" } })
+                    </div>
+                    <div class="col-xs-5">
+                        <br>
+                        <b>
+                            Weight
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Weight, new { htmlAttributes = new { @class = "form-control", @placeholder = "Weight" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Cholesterol
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Cholesterol, new { htmlAttributes = new { @class = "form-control", @placeholder = "Cholesterol" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Cholesterol %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Cholesterol_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Cholesterol %" } })
+                    </div>
+                    <div class="col-xs-5">
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Save</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Sodium
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Sodium, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sodium" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Sodium %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Sodium_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sodium %" } })
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Total Carbonhydrate
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Total_Carbonhydrate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Total Carbonhydrate" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Total Carbonhydrate %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Total_Carbonhydrate_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Total Carbonhydrate %" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Dietary Fiber
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Dietary_Fiber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Dietary Fiber" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Dietary Fiber %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Dietary_Fiber_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Dietary Fiber %" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Sugar
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Sugar, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sugar" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Sugar %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Sugar_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sugar %" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            Protein
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Protein, new { htmlAttributes = new { @class = "form-control", @placeholder = "Protein" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            Protein %
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Protein_Yuzde, new { htmlAttributes = new { @class = "form-control", @placeholder = "Protein %" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                           1. Main Column Text
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Column1_Header, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kırmızı Renkli Kolon Başlık Metni" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            1. Main Column Value
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Column1_Value, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kırmızı Renkli Kolon Değeri" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            2. Main Column Text
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Column2_Header, new { htmlAttributes = new { @class = "form-control", @placeholder = "Turuncu Renkli Kolon Başlık Metni" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            2. Main Column Value
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Column2_Value, new { htmlAttributes = new { @class = "form-control", @placeholder = "Turuncu Renkli Kolon Değeri" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            3. Main Column Text
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Column3_Header, new { htmlAttributes = new { @class = "form-control", @placeholder = "Gri Renkli Kolon Başlık Metni" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            3. Main Column Value
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Column3_Value, new { htmlAttributes = new { @class = "form-control", @placeholder = "Gri Renkli Kolon Değeri" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <b>
+                            4. Main Column Text
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Column4_Header, new { htmlAttributes = new { @class = "form-control", @placeholder = "Lacivert Renkli Kolon Başlık Metni" } })
+                    </div>
+                    <div class="col-xs-4">
+                        <b>
+                            4. Main Column Value
+                        </b>
+                        @Html.EditorFor(model => model.t_productDetail.Column4_Value, new { htmlAttributes = new { @class = "form-control", @placeholder = "Lacivert Renkli Kolon Değeri" } })
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div>
+    </div>
+
+
+}
+

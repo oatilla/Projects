@@ -1,0 +1,12 @@
+﻿@model Galgale.Models.tbl_PortalHaber_Site
+@{
+    ViewBag.Title = "SiteEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Site Ekle</h2>
+@using (Html.BeginForm())
+{
+    @Html.EditorFor(model => model.Site_Adi, new { htmlAttributes = new { @class = "form-control" } })
+    <input type="submit" value="Create" class="btn btn-default" />
+}

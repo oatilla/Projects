@@ -1,0 +1,93 @@
+﻿@model IEnumerable<AnnaAndSarahWeb.Models.tblCategory>
+
+@{
+    ViewBag.Title = "DenemeSayfa";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    #targetUL {
+        width: 110px;
+        border: 1px solid silver;
+        margin-top: 2px;
+        list-style: none;
+        position: absolute;
+        border-radius: 15px;
+        background-color: #fff;
+    }
+
+        #targetUL li {
+            margin-left: -40px;
+            border-bottom: 1px solid silver;
+            height: 50px;
+            padding-left: 5px;
+            padding-top: 8px;
+            cursor: pointer;
+        }
+</style>
+
+<div id="targetDiv">
+<input type="text" id="target" />
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //We have used keyup event to track the user enter value in the textbox.
+        $("#target").keyup(function () {
+            //Fetching the textbox value.
+            var query = $(this).val();
+            //Calling GetItems method.
+            getItems(query);
+        });
+
+        function getItems(query) {
+
+            //Here we are using ajax get method to fetch data from the list based on the user entered value in the textbox.
+            //We are sending query i.e textbox as data.
+            $.ajax({
+                url: '@Url.Action("DenemeSayfa", "Home")',
+                data: { "query": query },
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.Data != null) {
+                        if ($("#targetUL") != undefined) {
+                            //If the UL element is not null or undefined we are clearing it, so that the result is appended in new UL every next time.
+                            $("#targetUL").remove();
+                        }
+                        //assigning json response data to local variable. It is basically list of values.
+                        data = response.Data;
+                        //appending an UL element to show the values.
+                        $("#targetDiv").append($("<ul id='targetUL'></ul>"));
+                        //Removing previously added li elements to the list.
+                        $("#targetUL").find("li").remove();
+                        //We are iterating over the list returned by the json and for each element we are creating a li element and appending the li element to ul element.
+                        $.each(data, function (i, value) {
+                            //On click of li element we are calling a method.
+                            $("#targetUL").append($("<li class='targetLI' onclick='javascript:appendTextToTextBox(this)'>" + value + "</li>"));
+
+                        });
+                    }
+                    else {
+                        //If data is null the we are removing the li and ul elements.
+                        $("#targetUL").find("li").remove();
+                        $("#targetUL").remove();
+                    }
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        }
+    });
+
+    //This method appends the text oc clicked li element to textbox.
+    function appendTextToTextBox(e) {
+        //Getting the text of selected li element.
+        var textToappend = e.innerText;
+        //setting the value attribute of textbox with selected li element.
+        $("#target").val(textToappend);
+        //Removing the ul element once selected element is set to textbox.
+        $("#targetUL").remove();
+    }
+</script>

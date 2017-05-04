@@ -1,0 +1,7 @@
+﻿@model AnnaAndSarahWeb.Models.TagPage
+
+@Html.HiddenFor(x => x.Tag.TagId)
+@Html.HiddenFor(x => x.Tag.TagName)
+
+@Html.CheckBoxFor(x => x.Onay)
+@Html.DisplayFor(x => x.Tag.TagName)

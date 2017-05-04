@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AnnaAndSarahWeb.Models.tblCategory>
+
+@{
+    ViewBag.Title = "GetSearchList";
+    Layout = "~/Views/Shared/AltSayfa.cshtml";
+}
+
+<section class="parent-categorys" role="main">
+    <div class="container">
+        <div class="clearfix">
+            <div id="product-category-menu">
+                <ul class="list-unstyled list-inline clearfix">
+                    @ViewBag.SearchMesaj
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <li>
+                                <div style="background-image:url('../../images/Categories/@item.Image')">
+                                    <span>
+                                        <a href="~/Home/Product/@item.LinkUrl">
+                                            @Html.DisplayFor(y => item.CatName)
+                                        </a>
+                                    </span>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB090928093827Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_PortalHaber_Icerik">
+          <Key>
+            <PropertyRef Name="HaberId" />
+          </Key>
+          <Property Name="HaberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HaberBaslik" Type="varchar" MaxLength="255" />
+          <Property Name="HaberAciklama" Type="varchar(max)" />
+          <Property Name="HaberMetni" Type="varchar(max)" />
+          <Property Name="KategoriId" Type="int" />
+          <Property Name="HaberUrl" Type="varchar" MaxLength="50" />
+          <Property Name="KaynakId" Type="int" />
+          <Property Name="YazarId" Type="int" />
+          <Property Name="Etiketler" Type="varchar(max)" />
+          <Property Name="MansetDurum" Type="bit" />
+          <Property Name="UMansetDurum" Type="bit" />
+          <Property Name="AltManset_Durum" Type="bit" />
+          <Property Name="Site_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_kategori">
+          <Key>
+            <PropertyRef Name="Kid" />
+          </Key>
+          <Property Name="Kid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Kaynak">
+          <Key>
+            <PropertyRef Name="KaynakId" />
+          </Key>
+          <Property Name="KaynakId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_OkunmaSayisi">
+          <Key>
+            <PropertyRef Name="OS_Id" />
+          </Key>
+          <Property Name="OS_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Haber_ID" Type="int" />
+          <Property Name="OkunmaSayisi" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Site">
+          <Key>
+            <PropertyRef Name="Site_Id" />
+          </Key>
+          <Property Name="Site_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Site_Adi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Tip">
+          <Key>
+            <PropertyRef Name="Tip_Id" />
+          </Key>
+          <Property Name="Tip_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip_Adi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Yazar">
+          <Key>
+            <PropertyRef Name="YazarId" />
+          </Key>
+          <Property Name="YazarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YName" Type="varchar" MaxLength="255" />
+          <Property Name="Tipi" Type="int" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+          <Property Name="EPosta" Type="varchar" MaxLength="50" />
+          <Property Name="Site_Id" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DB090928093827ModelStoreContainer">
+          <EntitySet Name="tbl_PortalHaber_Icerik" EntityType="Self.tbl_PortalHaber_Icerik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_kategori" EntityType="Self.tbl_PortalHaber_kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Kaynak" EntityType="Self.tbl_PortalHaber_Kaynak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_OkunmaSayisi" EntityType="Self.tbl_PortalHaber_OkunmaSayisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Site" EntityType="Self.tbl_PortalHaber_Site" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Tip" EntityType="Self.tbl_PortalHaber_Tip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Yazar" EntityType="Self.tbl_PortalHaber_Yazar" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB090928093827Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_PortalHaber_Icerik">
+          <Key>
+            <PropertyRef Name="HaberId" />
+          </Key>
+          <Property Name="HaberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HaberBaslik" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HaberAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HaberMetni" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="HaberUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KaynakId" Type="Int32" />
+          <Property Name="YazarId" Type="Int32" />
+          <Property Name="Etiketler" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MansetDurum" Type="Boolean" />
+          <Property Name="UMansetDurum" Type="Boolean" />
+          <Property Name="AltManset_Durum" Type="Boolean" />
+          <Property Name="Site_Id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_kategori">
+          <Key>
+            <PropertyRef Name="Kid" />
+          </Key>
+          <Property Name="Kid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Kaynak">
+          <Key>
+            <PropertyRef Name="KaynakId" />
+          </Key>
+          <Property Name="KaynakId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_OkunmaSayisi">
+          <Key>
+            <PropertyRef Name="OS_Id" />
+          </Key>
+          <Property Name="OS_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Haber_ID" Type="Int32" />
+          <Property Name="OkunmaSayisi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Site">
+          <Key>
+            <PropertyRef Name="Site_Id" />
+          </Key>
+          <Property Name="Site_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Site_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Tip">
+          <Key>
+            <PropertyRef Name="Tip_Id" />
+          </Key>
+          <Property Name="Tip_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Yazar">
+          <Key>
+            <PropertyRef Name="YazarId" />
+          </Key>
+          <Property Name="YazarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Tipi" Type="Int32" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EPosta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Site_Id" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DB090928093827Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_PortalHaber_Icerik" EntityType="Self.tbl_PortalHaber_Icerik" />
+          <EntitySet Name="tbl_PortalHaber_kategori" EntityType="Self.tbl_PortalHaber_kategori" />
+          <EntitySet Name="tbl_PortalHaber_Kaynak" EntityType="Self.tbl_PortalHaber_Kaynak" />
+          <EntitySet Name="tbl_PortalHaber_OkunmaSayisi" EntityType="Self.tbl_PortalHaber_OkunmaSayisi" />
+          <EntitySet Name="tbl_PortalHaber_Site" EntityType="Self.tbl_PortalHaber_Site" />
+          <EntitySet Name="tbl_PortalHaber_Tip" EntityType="Self.tbl_PortalHaber_Tip" />
+          <EntitySet Name="tbl_PortalHaber_Yazar" EntityType="Self.tbl_PortalHaber_Yazar" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB090928093827ModelStoreContainer" CdmEntityContainer="DB090928093827Entities">
+          <EntitySetMapping Name="tbl_PortalHaber_Icerik">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Icerik">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Icerik">
+                <ScalarProperty Name="HaberId" ColumnName="HaberId" />
+                <ScalarProperty Name="HaberBaslik" ColumnName="HaberBaslik" />
+                <ScalarProperty Name="HaberAciklama" ColumnName="HaberAciklama" />
+                <ScalarProperty Name="HaberMetni" ColumnName="HaberMetni" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="HaberUrl" ColumnName="HaberUrl" />
+                <ScalarProperty Name="KaynakId" ColumnName="KaynakId" />
+                <ScalarProperty Name="YazarId" ColumnName="YazarId" />
+                <ScalarProperty Name="Etiketler" ColumnName="Etiketler" />
+                <ScalarProperty Name="MansetDurum" ColumnName="MansetDurum" />
+                <ScalarProperty Name="UMansetDurum" ColumnName="UMansetDurum" />
+                <ScalarProperty Name="AltManset_Durum" ColumnName="AltManset_Durum" />
+                <ScalarProperty Name="Site_Id" ColumnName="Site_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_kategori">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_kategori">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_kategori">
+                <ScalarProperty Name="Kid" ColumnName="Kid" />
+                <ScalarProperty Name="KName" ColumnName="KName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Kaynak">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Kaynak">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Kaynak">
+                <ScalarProperty Name="KaynakId" ColumnName="KaynakId" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_OkunmaSayisi">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_OkunmaSayisi">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_OkunmaSayisi">
+                <ScalarProperty Name="OS_Id" ColumnName="OS_Id" />
+                <ScalarProperty Name="Haber_ID" ColumnName="Haber_ID" />
+                <ScalarProperty Name="OkunmaSayisi" ColumnName="OkunmaSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Site">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Site">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Site">
+                <ScalarProperty Name="Site_Id" ColumnName="Site_Id" />
+                <ScalarProperty Name="Site_Adi" ColumnName="Site_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Tip">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Tip">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Tip">
+                <ScalarProperty Name="Tip_Id" ColumnName="Tip_Id" />
+                <ScalarProperty Name="Tip_Adi" ColumnName="Tip_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Yazar">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Yazar">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Yazar">
+                <ScalarProperty Name="YazarId" ColumnName="YazarId" />
+                <ScalarProperty Name="YName" ColumnName="YName" />
+                <ScalarProperty Name="Tipi" ColumnName="Tipi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="EPosta" ColumnName="EPosta" />
+                <ScalarProperty Name="Site_Id" ColumnName="Site_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

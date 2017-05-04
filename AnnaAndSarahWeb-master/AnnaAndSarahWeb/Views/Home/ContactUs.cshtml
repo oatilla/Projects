@@ -1,0 +1,124 @@
+﻿@model AnnaAndSarahWeb.Models.Contact
+
+@{
+    Layout = "~/Views/Shared/AltSayfa.cshtml";
+}
+
+
+
+@using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+@Html.AntiForgeryToken()
+<section role="main" class="main" id="main">
+    <div class="container">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="main-page-content">
+            <p class="lead">
+                @ViewBag.Uyar
+            </p>
+            <div>
+                <h3>Contact</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="embed-responsive embed-responsive-1by1">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.514532172678!2d-74.46777348427396!3d40.55231345530562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3b308ce3c4487%3A0x12eabfa70d1b857c!2sRoyal+Quality+Group+LLC!5e0!3m2!1str!2str!4v1462619099944" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <form autocomplete="off">
+                            <div class="form-group">
+                                <label for="contactInputText1">First Name</label>
+                                @*<input type="text" class="form-control input-lg breeserif" id="contactInputText1" placeholder="First Name">*@
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @id= "contactInputText1", @name="Name", @class = "form-control input-lg breeserif", @placeholder = "First Name" , required = "required" } })
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="contactInputText2">Last Name</label>
+                                @*<input type="text" class="form-control input-lg breeserif" id="contactInputText2" placeholder="Last Name">*@
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @id = "contactInputText2", @class = "form-control input-lg breeserif", @placeholder = "Last Name", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="contactInputEmail1">Email address</label>
+                                @*<input type="email" class="form-control input-lg breeserif" id="contactInputEmail1" placeholder="Email">*@
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "contactInputEmail1", @class = "form-control input-lg breeserif", @placeholder = "Email", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="contactInputSubject1">Subject</label>
+                                @*<input type="email" class="form-control input-lg breeserif" id="contactInputEmail1" placeholder="Email">*@
+                                @Html.EditorFor(model => model.Topic, new { htmlAttributes = new { @id = "contactInputSubject1", @class = "form-control input-lg breeserif", @placeholder = "Subject", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Topic, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="form-group">
+                                <label for="contactTextarea1">Topic</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                        Option one
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        Option two
+                                    </label>
+                                </div>
+                                <div class="radio disabled">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                                        Option three is disabled
+                                    </label>
+                                </div>
+                            </div>*@
+                            <div class="form-group">
+                                <label for="contactInputEmail1">Your Message</label>
+                                @Html.TextAreaFor(model => model.Text, new { @rows = "3",@width = "300px", @id = "contactTextarea2", @class = "form-control input-lg breeserif", @placeholder = "Talk about more...", required = "required" } )
+                                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Send me one copy
+                                </label>
+                            </div>*@
+                            <button type="reset" class="btn btn-danger btn-lg breeserif">Cancel</button>
+                            <button type="submit" class="btn btn-success btn-lg breeserif">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@*<script>
+        $(document).ready(function () {
+            $("#AjaxPost").click(function () {
+                $("#content").html("<b>Please Wait...</b>");
+
+                var dataObject = {
+                    MailAdress: $("#MailAdress").val()
+                };
+
+                $.ajax({
+                    url: "@Url.Action("Index","Home")",
+                    type: "POST",
+                    data: dataObject,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.toString() == "Successfully Saved!") {
+                            $("#MailAdress").val('');
+                            $("#content").html("<div class='success'>" + data + "</div>");
+                        }
+                        else {
+                            $("#content").html("<div class='failed'>" + data + "</div>");
+                        }
+                    },
+                    error: function () {
+                        $("#content").html("<div class='failed'>Error! Please try again</div>");
+                    }
+                });
+
+            });
+        });
+</script>*@
+}

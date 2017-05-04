@@ -1,0 +1,95 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model AnnaAndSarahWeb.Models.BlogFrontList
+@{
+    Layout = "~/Views/Shared/AltSayfa.cshtml";
+}
+
+<section role="main" class="main" id="main">
+    <div id="main-blog">
+        <div class="container container-narrow">
+            @*<div>
+                <h2 class="fw300 page-headers">Filtered by <span class="breeserif">Healthy Tips</span>:</h2>
+            </div>*@
+            <div class="row">
+                <div class="col-sm-8">
+                    @foreach (var item in Model.BlogPaketList)
+                    {
+                        <article class="post post-short entry clearfix">
+                            <p class="meta-info">Posted on @item.blog_category.Tarih in <a href="~/Home/BlogList/@item.blog_category.UrlRewrite" rel="category tag">@item.blog_category.CName</a> | <span class="comments-number"><a href="#comments">@item.count comments</a></span></p>
+                            <div class="post-thumbnail">
+                                <a href="~/Home/Blog/@item.blog_category.UrlRewrite">
+                                    <img src="~/images/Blog/@item.blog_category.BResim" class="img-responsive center-block" />
+                                    <span class="overlay post-overlay"></span>
+                                </a>
+                            </div>
+                            <div class="post-content clearfix">
+                                <h2 class="title"><a href="~/Home/Blog/@item.blog_category.UrlRewrite">@item.blog_category.BAd</a></h2>
+                                <p class="fs20 georgiaserif">@item.blog_category.BAciklama</p>
+                                <p class="fs17">@item.blog_category.BText</p>
+                                <a href="~/Home/Blog/@item.blog_category.UrlRewrite" class="more breeserif" title="Read More Post">Read More</a>
+                            </div>
+                        </article>
+                    }                                 
+                    <nav>
+                        <ul class="pagination pagination-lg clearfix">
+                            @*@Html.PagedListPager((IPagedList)Model, page => Url.Action("BlogList", new { page }), PagedListRenderOptions.PageNumbersOnly)*@
+                            @*<li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>*@
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-sm-4">
+                    <div class="widget">
+                        @*@Html.Partial("categoryblog", null)*@    
+                        @*<h4 class="widgettitle breeserif">Category</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Healthy Tips <span class="badge pull-right">19</span></a></li>
+                            <li><a href="#">Recipes <span class="badge pull-right">33</span></a></li>
+                            <li><a href="#">More <span class="badge pull-right">152</span></a></li>
+                        </ul>*@
+                        <h4 class="widgettitle breeserif">Category</h4>
+                        <ul class="list-unstyled">
+                            @foreach (var item in Model.CategoryWidgetList)
+                            {
+                                <li><a href="~/Home/BlogList/@item.Cid">@item.CName @*<span class="badge pull-right">19</span>*@</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h4 class="widgettitle breeserif">Popular Posts</h4>
+                        <ul class="list-unstyled">
+                            @foreach (var item in Model.BlogWidgetList)
+                            {
+                                <li><a href="~/Home/Blog/@item.UrlRewrite">@item.BAd</a></li>
+                            }
+                        </ul>
+                    </div>
+                    @*<div class="widget">*@
+                        @*@Html.Partial("Archives", null)*@
+                        @*<h4 class="widgettitle breeserif">Archives</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">April 2016</a></li>
+                            <li><a href="#">August 2015</a></li>
+                            <li><a href="#">May 2011</a></li>
+                            <li><a href="#">September 2010</a></li>
+                        </ul>*@
+                    @*</div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

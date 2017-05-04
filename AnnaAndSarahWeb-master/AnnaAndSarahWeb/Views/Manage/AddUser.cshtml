@@ -1,0 +1,34 @@
+﻿@model AnnaAndSarahWeb.Models.tblWebUser
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>AddUser</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()      
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">User Name</h3>
+                </div>
+                <div class="box-body pad">
+                    @Html.EditorFor(model => model.UsName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="box-header">
+                    <h3 class="box-title">User Password</h3>
+                </div>
+                <div class="box-body pad">
+                    @Html.EditorFor(model => model.UsPassw, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                </div>              
+            </div>            
+            <div class="box">                
+                <input type="submit" name="OK" />
+            </div>
+        </div>
+    </div>
+}

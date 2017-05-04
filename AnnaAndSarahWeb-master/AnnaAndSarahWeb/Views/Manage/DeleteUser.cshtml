@@ -1,0 +1,18 @@
+﻿@model AnnaAndSarahWeb.Models.tblWebUser
+
+@{
+    ViewBag.Title = "DeleteBlog";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>Delete Blog</h2>
+@using (Html.BeginForm())
+{
+    <h3>Are you sure you want to delete this? @ViewBag.Header</h3>
+    <div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "UserList")
+        </div>
+    </div>
+}

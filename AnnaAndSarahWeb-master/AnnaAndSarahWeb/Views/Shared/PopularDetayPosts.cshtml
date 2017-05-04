@@ -1,0 +1,10 @@
+﻿@using (Html.BeginForm("PopularDetayPosts", "Home"))
+{
+    <h4 class="widgettitle breeserif">Popular Posts</h4>
+    <ul class="list-unstyled">
+        @foreach (var item in Model.PopulerBlogList)
+        {
+            <li><a href="~/Home/BlogList/@item.Bid">@item.BAd</a></li>
+        }
+    </ul>
+}

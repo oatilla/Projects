@@ -1,0 +1,10 @@
+﻿@model  IEnumerable<AnnaAndSarahWeb.Models.tbl_SubscribeList>
+
+<div id="gridContent" style="padding:20px;" class="datagrid">
+    @foreach (var item in Model)
+            {
+        <p>
+            @item.MailAddress             
+        </p>
+    }
+</div>

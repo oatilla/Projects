@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AnnaAndSarahWeb.Models.tblWebUser>
+
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>UserList</h2>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">
+                    @Html.ActionLink("Create New User", "AddUser")
+                </h3>                
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>User Adı</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UsName)
+                                </td>                                
+                                <td>
+                                    @Html.ActionLink("Sil", "DeleteUser", new { id = item.UsId })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>User Adı</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div><!-- /.box-body -->
+        </div>
+    </div><!-- /.col -->
+</div>

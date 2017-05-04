@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AnnaAndSarahWeb.Models.tblCategory>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+
+<div class="row">
+    <!-- Left col -->
+    <div class="col-md-8" style="width:100%">
+        <div class="row">
+            <div class="col-md-6" style="width:100%">
+                <!-- USERS LIST -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Latest Members</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <ul class="users-list clearfix">
+
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <img src="~/images/Categories/@item.Image" alt="User Image">
+                                    <a class="users-list-name" href="~/Manage/AddProductDetail/@item.LinkUrl">@item.CatName</a>
+                                </li>
+                            }
+                        </ul><!-- /.users-list -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a href="javascript::" class="uppercase">View All Users</a>
+                    </div><!-- /.box-footer -->
+                </div><!--/.box -->
+            </div>
+        </div>
+    </div>
+</div>

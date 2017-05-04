@@ -1,0 +1,17 @@
+﻿@model IEnumerable<AnnaAndSarahWeb.Models.TagPage>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div style="font-family:Arial">
+    <h2>Index</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel()
+        <br />
+        <input type="submit" value="Submit" />
+    }
+</div> 
+

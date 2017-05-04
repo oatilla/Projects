@@ -1,0 +1,42 @@
+﻿@model AnnaAndSarahWeb.Models.Picture
+@{
+    ViewBag.Title = "Deneme";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>Deneme</h2>
+
+@using (Html.BeginForm("NewCategory", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="box box-danger">
+        <div class="box-body">
+            <div class="row">                
+                <div class="col-xs-3">
+                    <b>
+                        Ürün Adı
+                    </b>
+                    @Html.EditorFor(model => model.getCategory.CatName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kategori Adı Güncellenecek" } })
+                </div>
+                <div class="col-xs-4">
+                    <b>
+                        Sıra Numarası
+                    </b>
+                    @Html.EditorFor(model => model.getCategory.SiraNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ana sayfada ürünlerin gözükme sırasını belirler..." } })
+                </div>
+                <div class="col-xs-5">
+                    <b>
+                        Resim Ekle
+                    </b>
+                    <input type="file" name="file" />
+                </div>
+                <div class="col-xs-6">
+                    <b>
+                        Kaydet
+                    </b>
+                    <input type="submit" name="OK" />             
+                </div>
+            </div>            
+        </div>
+    </div>
+}
+

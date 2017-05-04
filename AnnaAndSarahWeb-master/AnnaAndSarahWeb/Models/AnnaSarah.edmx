@@ -1,0 +1,942 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AnnaSarahModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.__MigrationHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+            <PropertyRef Name="Model" />
+            <PropertyRef Name="ProductVersion" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.AspNetUserClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_SubscribeList">
+          <Key>
+            <PropertyRef Name="Sid" />
+          </Key>
+          <Property Name="Sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailAddress" Type="varchar" MaxLength="255" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblBanner">
+          <Key>
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="Bid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BannerHeader" Type="varchar(max)" />
+          <Property Name="BannerText" Type="varchar(max)" />
+          <Property Name="BannerImage" Type="varchar" MaxLength="255" />
+          <Property Name="SiraNo" Type="int" />
+          <Property Name="Link" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblBlog">
+          <Key>
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="Bid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BAd" Type="varchar(max)" />
+          <Property Name="BAciklama" Type="varchar(max)" />
+          <Property Name="BText" Type="varchar(max)" />
+          <Property Name="BResim" Type="varchar(max)" />
+          <Property Name="Cid" Type="int" />
+          <Property Name="Yazar" Type="varchar" MaxLength="255" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="OkunmaSayisi" Type="int" />
+          <Property Name="UrlRewrite" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblBlogCategory">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CMainId" Type="int" />
+          <Property Name="CatName" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
+          <Property Name="LinkUrl" Type="varchar" MaxLength="50" />
+          <Property Name="IsEnabled" Type="bit" />
+          <Property Name="SiraNo" Type="int" />
+        </EntityType>
+        <EntityType Name="tblComment">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="Bid" Type="int" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Topic" Type="varchar" MaxLength="50" />
+          <Property Name="Text" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblProductDetail">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatId" Type="int" />
+          <Property Name="SiraNo" Type="int" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="Link" Type="varchar" MaxLength="1024" />
+          <Property Name="Company" Type="varchar" MaxLength="255" />
+          <Property Name="Country" Type="varchar" MaxLength="255" />
+          <Property Name="Ingredients" Type="varchar(max)" />
+          <Property Name="ServingSize" Type="varchar" MaxLength="50" />
+          <Property Name="Calories" Type="varchar" MaxLength="50" />
+          <Property Name="Calories_from_fat" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Fat" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Fat_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Saturated_Fat" Type="varchar" MaxLength="50" />
+          <Property Name="Saturated_Fat_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Trans_Fat" Type="varchar" MaxLength="50" />
+          <Property Name="Trans_Fat_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Cholesterol" Type="varchar" MaxLength="50" />
+          <Property Name="Cholesterol_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Sodium" Type="varchar" MaxLength="50" />
+          <Property Name="Sodium_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Carbonhydrate" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Carbonhydrate_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Dietary_Fiber" Type="varchar" MaxLength="50" />
+          <Property Name="Dietary_Fiber_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Sugar" Type="varchar" MaxLength="50" />
+          <Property Name="Sugar_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Protein" Type="varchar" MaxLength="50" />
+          <Property Name="Protein_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="VitaminA_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="VitaminC_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Calcium_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Iron_Yuzde" Type="varchar" MaxLength="50" />
+          <Property Name="Weight" Type="varchar" MaxLength="50" />
+          <Property Name="Column1_Header" Type="varchar" MaxLength="50" />
+          <Property Name="Column1_Value" Type="varchar" MaxLength="50" />
+          <Property Name="Column2_Header" Type="varchar" MaxLength="50" />
+          <Property Name="Column2_Value" Type="varchar" MaxLength="50" />
+          <Property Name="Column3_Header" Type="varchar" MaxLength="50" />
+          <Property Name="Column3_Value" Type="varchar" MaxLength="50" />
+          <Property Name="Column4_Header" Type="varchar" MaxLength="50" />
+          <Property Name="Column4_Value" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblTagCategory">
+          <Key>
+            <PropertyRef Name="Rid" />
+          </Key>
+          <Property Name="Rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagId" Type="int" />
+          <Property Name="CatId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTags">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagName" Type="varchar" MaxLength="255" />
+          <Property Name="TagColor" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UsId" />
+          </Key>
+          <Property Name="UsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsName" Type="varchar" MaxLength="50" />
+          <Property Name="UsPassw" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblWebUser">
+          <Key>
+            <PropertyRef Name="UsId" />
+          </Key>
+          <Property Name="UsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsName" Type="varchar" MaxLength="50" />
+          <Property Name="UsPassw" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.vw_blog_category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_blog_category">
+          <Key>
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="CName" Type="varchar" MaxLength="255" />
+          <Property Name="Bid" Type="int" Nullable="false" />
+          <Property Name="BAd" Type="varchar(max)" />
+          <Property Name="BAciklama" Type="varchar(max)" />
+          <Property Name="BText" Type="varchar(max)" />
+          <Property Name="BResim" Type="varchar(max)" />
+          <Property Name="Cid" Type="int" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="Yazar" Type="varchar" MaxLength="255" />
+          <Property Name="OkunmaSayisi" Type="int" />
+          <Property Name="UrlRewrite" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.vw_category_product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_category_product">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="int" Nullable="false" />
+          <Property Name="CMainId" Type="int" />
+          <Property Name="CatName" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
+          <Property Name="LinkUrl" Type="varchar" MaxLength="50" />
+          <Property Name="SiraNo" Type="int" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="SiraYeni" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.vw_kat_detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_kat_detail">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="int" Nullable="false" />
+          <Property Name="CatId" Type="int" />
+          <Property Name="SiraNo" Type="int" />
+          <Property Name="CMainId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ROYALSITES.dbo.vw_tag_cat_product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_tag_cat_product">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="TagName" Type="varchar" MaxLength="255" />
+          <Property Name="TagId" Type="int" />
+          <Property Name="LinkUrl" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
+          <Property Name="CatName" Type="varchar" MaxLength="50" />
+          <Property Name="Cid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AnnaSarahModelStoreContainer">
+          <EntitySet Name="tbl_SubscribeList" EntityType="Self.tbl_SubscribeList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBanner" EntityType="Self.tblBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBlog" EntityType="Self.tblBlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBlogCategory" EntityType="Self.tblBlogCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblComment" EntityType="Self.tblComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblContact" EntityType="Self.tblContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTagCategory" EntityType="Self.tblTagCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTags" EntityType="Self.tblTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWebUser" EntityType="Self.tblWebUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [__MigrationHistory].[MigrationId] AS [MigrationId], 
+    [__MigrationHistory].[ContextKey] AS [ContextKey], 
+    [__MigrationHistory].[Model] AS [Model], 
+    [__MigrationHistory].[ProductVersion] AS [ProductVersion]
+    FROM [dbo].[__MigrationHistory] AS [__MigrationHistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetRoles].[Id] AS [Id], 
+    [AspNetRoles].[Name] AS [Name]
+    FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserClaims].[Id] AS [Id], 
+    [AspNetUserClaims].[UserId] AS [UserId], 
+    [AspNetUserClaims].[ClaimType] AS [ClaimType], 
+    [AspNetUserClaims].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [AspNetUserClaims]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserLogins].[LoginProvider] AS [LoginProvider], 
+    [AspNetUserLogins].[ProviderKey] AS [ProviderKey], 
+    [AspNetUserLogins].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [AspNetUserLogins]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserRoles].[UserId] AS [UserId], 
+    [AspNetUserRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_blog_category" EntityType="Self.vw_blog_category" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_blog_category].[CName] AS [CName], 
+    [vw_blog_category].[Bid] AS [Bid], 
+    [vw_blog_category].[BAd] AS [BAd], 
+    [vw_blog_category].[BAciklama] AS [BAciklama], 
+    [vw_blog_category].[BText] AS [BText], 
+    [vw_blog_category].[BResim] AS [BResim], 
+    [vw_blog_category].[Cid] AS [Cid], 
+    [vw_blog_category].[Tarih] AS [Tarih], 
+    [vw_blog_category].[Yazar] AS [Yazar], 
+    [vw_blog_category].[OkunmaSayisi] AS [OkunmaSayisi], 
+    [vw_blog_category].[UrlRewrite] AS [UrlRewrite]
+    FROM [dbo].[vw_blog_category] AS [vw_blog_category]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_category_product" EntityType="Self.vw_category_product" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_category_product].[Cid] AS [Cid], 
+    [vw_category_product].[CMainId] AS [CMainId], 
+    [vw_category_product].[CatName] AS [CatName], 
+    [vw_category_product].[Image] AS [Image], 
+    [vw_category_product].[LinkUrl] AS [LinkUrl], 
+    [vw_category_product].[SiraNo] AS [SiraNo], 
+    [vw_category_product].[Stock] AS [Stock], 
+    [vw_category_product].[SiraYeni] AS [SiraYeni]
+    FROM [dbo].[vw_category_product] AS [vw_category_product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_kat_detail" EntityType="Self.vw_kat_detail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_kat_detail].[Cid] AS [Cid], 
+    [vw_kat_detail].[CatId] AS [CatId], 
+    [vw_kat_detail].[SiraNo] AS [SiraNo], 
+    [vw_kat_detail].[CMainId] AS [CMainId]
+    FROM [dbo].[vw_kat_detail] AS [vw_kat_detail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_tag_cat_product" EntityType="Self.vw_tag_cat_product" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_tag_cat_product].[TagName] AS [TagName], 
+    [vw_tag_cat_product].[TagId] AS [TagId], 
+    [vw_tag_cat_product].[LinkUrl] AS [LinkUrl], 
+    [vw_tag_cat_product].[Image] AS [Image], 
+    [vw_tag_cat_product].[CatName] AS [CatName], 
+    [vw_tag_cat_product].[Cid] AS [Cid]
+    FROM [dbo].[vw_tag_cat_product] AS [vw_tag_cat_product]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AnnaSarahModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CMainId" Type="Int32" />
+          <Property Name="CatName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LinkUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <Property Name="SiraNo" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="AnnaSarahEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
+          <EntitySet Name="tblProductDetails" EntityType="AnnaSarahModel.tblProductDetail" />
+          <EntitySet Name="tblTagCategories" EntityType="AnnaSarahModel.tblTagCategory" />
+          <EntitySet Name="tblTags" EntityType="AnnaSarahModel.tblTag" />
+          <EntitySet Name="vw_category_product" EntityType="AnnaSarahModel.vw_category_product" />
+          <EntitySet Name="vw_kat_detail" EntityType="AnnaSarahModel.vw_kat_detail" />
+          <EntitySet Name="vw_tag_cat_product" EntityType="AnnaSarahModel.vw_tag_cat_product" />
+          <EntitySet Name="tbl_SubscribeList" EntityType="AnnaSarahModel.tbl_SubscribeList" />
+          <EntitySet Name="tblContacts" EntityType="AnnaSarahModel.tblContact" />
+          <EntitySet Name="tblBanners" EntityType="AnnaSarahModel.tblBanner" />
+          <EntitySet Name="tblBlogs" EntityType="AnnaSarahModel.tblBlog" />
+          <EntitySet Name="tblBlogCategories" EntityType="AnnaSarahModel.tblBlogCategory" />
+          <EntitySet Name="tblComments" EntityType="AnnaSarahModel.tblComment" />
+          <EntitySet Name="vw_blog_category" EntityType="AnnaSarahModel.vw_blog_category" />
+          <EntitySet Name="C__MigrationHistory" EntityType="AnnaSarahModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="AnnaSarahModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="AnnaSarahModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="AnnaSarahModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUserRoles" EntityType="AnnaSarahModel.AspNetUserRole" />
+          <EntitySet Name="tblUsers" EntityType="AnnaSarahModel.tblUser" />
+          <EntitySet Name="tblWebUsers" EntityType="AnnaSarahModel.tblWebUser" />
+        </EntityContainer>
+        <EntityType Name="tblProductDetail">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiraNo" Type="Int32" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="Link" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ingredients" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ServingSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Calories" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Calories_from_fat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Fat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Fat_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Saturated_Fat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Saturated_Fat_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Trans_Fat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Trans_Fat_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cholesterol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cholesterol_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sodium" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sodium_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Carbonhydrate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Carbonhydrate_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dietary_Fiber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dietary_Fiber_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sugar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sugar_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Protein" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Protein_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VitaminA_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VitaminC_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Calcium_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Iron_Yuzde" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CatId" Type="Int32" />
+          <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Column1_Header" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Column1_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Column2_Header" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Column2_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Column3_Header" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Column3_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Column4_Header" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Column4_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTagCategory">
+          <Key>
+            <PropertyRef Name="Rid" />
+          </Key>
+          <Property Name="Rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagId" Type="Int32" />
+          <Property Name="CatId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblTag">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TagColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_category_product">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="Int32" Nullable="false" />
+          <Property Name="CMainId" Type="Int32" />
+          <Property Name="CatName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LinkUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SiraNo" Type="Int32" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="SiraYeni" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_kat_detail">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="Int32" Nullable="false" />
+          <Property Name="CatId" Type="Int32" />
+          <Property Name="SiraNo" Type="Int32" />
+          <Property Name="CMainId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_tag_cat_product">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="TagName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TagId" Type="Int32" />
+          <Property Name="LinkUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CatName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_SubscribeList">
+          <Key>
+            <PropertyRef Name="Sid" />
+          </Key>
+          <Property Name="Sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Topic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBanner">
+          <Key>
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="Bid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BannerHeader" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BannerText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BannerImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SiraNo" Type="Int32" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBlog">
+          <Key>
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="Bid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cid" Type="Int32" />
+          <Property Name="Yazar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="OkunmaSayisi" Type="Int32" />
+          <Property Name="UrlRewrite" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBlogCategory">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblComment">
+          <Key>
+            <PropertyRef Name="Cid" />
+          </Key>
+          <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Bid" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vw_blog_category">
+          <Key>
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="CName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Bid" Type="Int32" Nullable="false" />
+          <Property Name="BAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cid" Type="Int32" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="Yazar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OkunmaSayisi" Type="Int32" />
+          <Property Name="UrlRewrite" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+            <PropertyRef Name="Model" />
+            <PropertyRef Name="ProductVersion" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UsId" />
+          </Key>
+          <Property Name="UsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsPassw" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblWebUser">
+          <Key>
+            <PropertyRef Name="UsId" />
+          </Key>
+          <Property Name="UsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsPassw" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AnnaSarahModelStoreContainer" CdmEntityContainer="AnnaSarahEntities">
+          <EntitySetMapping Name="tblCategories">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblCategory">
+              <MappingFragment StoreEntitySet="tblCategory">
+                <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+                <ScalarProperty Name="CMainId" ColumnName="CMainId" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductDetails">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblProductDetail">
+              <MappingFragment StoreEntitySet="tblProductDetail">
+                <ScalarProperty Name="Column4_Value" ColumnName="Column4_Value" />
+                <ScalarProperty Name="Column4_Header" ColumnName="Column4_Header" />
+                <ScalarProperty Name="Column3_Value" ColumnName="Column3_Value" />
+                <ScalarProperty Name="Column3_Header" ColumnName="Column3_Header" />
+                <ScalarProperty Name="Column2_Value" ColumnName="Column2_Value" />
+                <ScalarProperty Name="Column2_Header" ColumnName="Column2_Header" />
+                <ScalarProperty Name="Column1_Value" ColumnName="Column1_Value" />
+                <ScalarProperty Name="Column1_Header" ColumnName="Column1_Header" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="Iron_Yuzde" ColumnName="Iron_Yuzde" />
+                <ScalarProperty Name="Calcium_Yuzde" ColumnName="Calcium_Yuzde" />
+                <ScalarProperty Name="VitaminC_Yuzde" ColumnName="VitaminC_Yuzde" />
+                <ScalarProperty Name="VitaminA_Yuzde" ColumnName="VitaminA_Yuzde" />
+                <ScalarProperty Name="Protein_Yuzde" ColumnName="Protein_Yuzde" />
+                <ScalarProperty Name="Protein" ColumnName="Protein" />
+                <ScalarProperty Name="Sugar_Yuzde" ColumnName="Sugar_Yuzde" />
+                <ScalarProperty Name="Sugar" ColumnName="Sugar" />
+                <ScalarProperty Name="Dietary_Fiber_Yuzde" ColumnName="Dietary_Fiber_Yuzde" />
+                <ScalarProperty Name="Dietary_Fiber" ColumnName="Dietary_Fiber" />
+                <ScalarProperty Name="Total_Carbonhydrate_Yuzde" ColumnName="Total_Carbonhydrate_Yuzde" />
+                <ScalarProperty Name="Total_Carbonhydrate" ColumnName="Total_Carbonhydrate" />
+                <ScalarProperty Name="Sodium_Yuzde" ColumnName="Sodium_Yuzde" />
+                <ScalarProperty Name="Sodium" ColumnName="Sodium" />
+                <ScalarProperty Name="Cholesterol_Yuzde" ColumnName="Cholesterol_Yuzde" />
+                <ScalarProperty Name="Cholesterol" ColumnName="Cholesterol" />
+                <ScalarProperty Name="Trans_Fat_Yuzde" ColumnName="Trans_Fat_Yuzde" />
+                <ScalarProperty Name="Trans_Fat" ColumnName="Trans_Fat" />
+                <ScalarProperty Name="Saturated_Fat_Yuzde" ColumnName="Saturated_Fat_Yuzde" />
+                <ScalarProperty Name="Saturated_Fat" ColumnName="Saturated_Fat" />
+                <ScalarProperty Name="Total_Fat_Yuzde" ColumnName="Total_Fat_Yuzde" />
+                <ScalarProperty Name="Total_Fat" ColumnName="Total_Fat" />
+                <ScalarProperty Name="Calories_from_fat" ColumnName="Calories_from_fat" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="ServingSize" ColumnName="ServingSize" />
+                <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTagCategories">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblTagCategory">
+              <MappingFragment StoreEntitySet="tblTagCategory">
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="Rid" ColumnName="Rid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTags">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblTag">
+              <MappingFragment StoreEntitySet="tblTags">
+                <ScalarProperty Name="TagColor" ColumnName="TagColor" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_category_product">
+            <EntityTypeMapping TypeName="AnnaSarahModel.vw_category_product">
+              <MappingFragment StoreEntitySet="vw_category_product">
+                <ScalarProperty Name="SiraYeni" ColumnName="SiraYeni" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+                <ScalarProperty Name="CMainId" ColumnName="CMainId" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_kat_detail">
+            <EntityTypeMapping TypeName="AnnaSarahModel.vw_kat_detail">
+              <MappingFragment StoreEntitySet="vw_kat_detail">
+                <ScalarProperty Name="CMainId" ColumnName="CMainId" />
+                <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_tag_cat_product">
+            <EntityTypeMapping TypeName="AnnaSarahModel.vw_tag_cat_product">
+              <MappingFragment StoreEntitySet="vw_tag_cat_product">
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SubscribeList">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tbl_SubscribeList">
+              <MappingFragment StoreEntitySet="tbl_SubscribeList">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContacts">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblContact">
+              <MappingFragment StoreEntitySet="tblContact">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBanners">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblBanner">
+              <MappingFragment StoreEntitySet="tblBanner">
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+                <ScalarProperty Name="BannerImage" ColumnName="BannerImage" />
+                <ScalarProperty Name="BannerText" ColumnName="BannerText" />
+                <ScalarProperty Name="BannerHeader" ColumnName="BannerHeader" />
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBlogs">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblBlog">
+              <MappingFragment StoreEntitySet="tblBlog">
+                <ScalarProperty Name="UrlRewrite" ColumnName="UrlRewrite" />
+                <ScalarProperty Name="OkunmaSayisi" ColumnName="OkunmaSayisi" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Yazar" ColumnName="Yazar" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+                <ScalarProperty Name="BResim" ColumnName="BResim" />
+                <ScalarProperty Name="BText" ColumnName="BText" />
+                <ScalarProperty Name="BAciklama" ColumnName="BAciklama" />
+                <ScalarProperty Name="BAd" ColumnName="BAd" />
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBlogCategories">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblBlogCategory">
+              <MappingFragment StoreEntitySet="tblBlogCategory">
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblComments">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblComment">
+              <MappingFragment StoreEntitySet="tblComment">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_blog_category">
+            <EntityTypeMapping TypeName="AnnaSarahModel.vw_blog_category">
+              <MappingFragment StoreEntitySet="vw_blog_category">
+                <ScalarProperty Name="UrlRewrite" ColumnName="UrlRewrite" />
+                <ScalarProperty Name="OkunmaSayisi" ColumnName="OkunmaSayisi" />
+                <ScalarProperty Name="Yazar" ColumnName="Yazar" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+                <ScalarProperty Name="BResim" ColumnName="BResim" />
+                <ScalarProperty Name="BText" ColumnName="BText" />
+                <ScalarProperty Name="BAciklama" ColumnName="BAciklama" />
+                <ScalarProperty Name="BAd" ColumnName="BAd" />
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="AnnaSarahModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="AnnaSarahModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="AnnaSarahModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="AnnaSarahModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="AnnaSarahModel.AspNetUserRole">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UsPassw" ColumnName="UsPassw" />
+                <ScalarProperty Name="UsName" ColumnName="UsName" />
+                <ScalarProperty Name="UsId" ColumnName="UsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWebUsers">
+            <EntityTypeMapping TypeName="AnnaSarahModel.tblWebUser">
+              <MappingFragment StoreEntitySet="tblWebUser">
+                <ScalarProperty Name="UsPassw" ColumnName="UsPassw" />
+                <ScalarProperty Name="UsName" ColumnName="UsName" />
+                <ScalarProperty Name="UsId" ColumnName="UsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,485 @@
+﻿@model  AnnaAndSarahWeb.Models.AnaSayfaPage
+
+@{
+    Layout = "~/Views/Shared/MainPage.cshtml";
+}
+<style>
+    #targetUL {
+        width: 110px;
+        /*border: 1px solid silver;*/
+        margin-top: 2px;
+        list-style: none;
+        position: absolute;
+        border-radius: 15px;
+        background-color: #fff;
+        width: 390px;
+        z-index: 4;
+    }
+
+        #targetUL li {
+            margin-left: -40px;
+            border-bottom: 1px solid silver;
+            height: 50px;
+            padding-left: 5px;
+            padding-top: 8px;
+            cursor: pointer;
+        }
+</style>
+@using (Html.BeginForm())
+{
+    <div id="page_body">
+        <header role="banner" class="header" id="header">
+            <div id="navigationMask">
+                <nav role="navigation" class="navigation" id="navigation">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <a id="logo" href="~/Home/Index" title="Anna&Sarah">
+                                    <img class="img-responsive center-block" src="~/images/logo-1.png" alt="Anna and sarah" />
+                                </a>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="clearfix">
+                                    <ul class="nvg-1">
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                <div class="hidden-xs hidden-ms">All products <span class="caret"></span></div>
+                                                <div class="visible-xs-block visible-ms-block clearfix"><span class="navbar-menu-1"><span class="icon-bar top-bar"></span><span class="icon-bar middle-bar"></span><span class="icon-bar bottom-bar"></span></span></div>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-navigation">
+                                                <li class="nuts"><a href="~/Home/Category/Nuts" title="Nuts"><img style="width:90px;" src="~/images/Categories/@ViewBag.Nuts" alt="Nuts" />Nuts</a></li>
+                                                <li class="fruits"><a href="~/Home/Category/DriedFruit" title="Dried Fruits"><img style="width:90px;" src="~/images/Categories/@ViewBag.DriedFruits" alt="Dried Fruits" />Dried Fruits</a></li>
+                                                <li class="seeds"><a href="~/Home/Category/Seeds_Grains" title="Seeds"><img style="width:90px;" src="~/images/Categories/@ViewBag.Seeds" alt="Seeds" />Seeds</a></li>
+                                                <li class="snacks"><a href="~/Home/Category/Snacks" title="Snacks"><img style="width:90px;" src="~/images/Categories/@ViewBag.Snacks" alt="Snacks" />Snacks</a></li>
+                                                <li class="gifts"><a href="~/Home/Category/Gifts" title="Gifts"><img style="width:90px;" src="~/images/Categories/@ViewBag.Gifts" alt="Gifts" />Gifts</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a title="Who we are" href="~/Home/WhoWeAre">
+                                                <div class="hidden-xs">Who we are</div>
+                                                <div class="visible-xs-block clearfix"><span class="glyphicon glyphicon-leaf alone"></span></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a title="Contact us" href="~/Home/ContactUs">
+                                                <div class="hidden-xs">Contact us</div>
+                                                <div class="visible-xs-block clearfix"><span class="glyphicon glyphicon-send alone"></span></div>
+                                            </a>
+                                        </li>
+                                        <li><a href="~/Home/BlogList">Blog</a></li>
+                                    </ul>
+                                </div>
+                                <p class="description breeserif text-right">Bringing you the flavors of the world.</p>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <span class="tree"></span>
+            </div>
+            <aside role="complementary" class="header-aside" id="header-aside">
+                <div class="container psre">
+                    <div id="annaANDsarah">
+                        <div class="hand anna"></div>
+                        <div class="hand sarah left"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <nav role="navigation" class="navigation-products scrollbar-dynamic" id="products">
+                                <ul class="breeserif clearfix">
+                                    @foreach (var item in Model.TagList)
+                                    {
+                                        <li style="color:@item.TagColor"><a style="background-color:@item.TagColor" href="~/Home/TagProduct/@item.TagId">@item.TagName</a></li>
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="header-table">
+                                <div>
+                                    <ul class="socialnetwork clearfix">
+                                        <li class="email"><a href="~/Home/ContactUs" title="Email" data-toggle="tooltip" data-placement="top"></a></li>
+                                        <li class="instagram"><a href="https://www.instagram.com/anna.and.sarah/" target="_blank" title="İnstagram" data-toggle="tooltip" data-placement="top"></a></li>
+                                        <li class="twitter"><a href="https://twitter.com/Anna_and_Sarah" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"></a></li>
+                                        <li class="facebook"><a href="https://www.facebook.com/annaandsarah/" target="_blank" title="Facebook" data-toggle="tooltip" data-placement="top"></a></li>
+                                    </ul>
+                                    <div id="navbarsearch">
+                                        @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", @placeholder = "Start searching...", @id = "target" } })
+                                        @*<input class="form-control" type="text" placeholder="Start searching..." id="target" />*@
+                                        <button type="submit" name="command" value="deneme1"><span class="text-hide">Submit</span><span class="glyphicon glyphicon-search alone"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="targetDiv">
+
+                            </div>
+                            <div class="header-msgbox">
+                                <div class="text-center row">
+                                    <a href="http://www.amazon.com/Anna-and-Sarah/b/ref=bl_dp_s_web_10155629011?ie=UTF8&node=10155629011&field-lbr_brands_browse-bin=Anna+and+Sarah" target="_blank" title="Where to buy" class="pull-left col-xs-4" data-toggle="tooltip" data-placement="top">
+                                        <img src="~/images/wheretobuy.png" class="img-responsive center-block" alt="Where to buy" />
+                                    </a>
+                                    <a href="~/Home/WhoWeAre" title="Social impact" class="pull-left col-xs-4" data-toggle="tooltip" data-placement="top">
+                                        <img src="~/images/socialimpact.png" class="img-responsive center-block" alt="Social impact" />
+                                    </a>
+                                    <a href="#" title="Customer satisfaction" class="pull-left col-xs-4" data-toggle="tooltip" data-placement="top">
+                                        <img src="~/images/customersatisfaction.png" class="img-responsive center-block" alt="Customer satisfaction" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </header>
+        <section role="main" class="main" id="main">
+            <div class="headnotice">
+                <div class="headnotice-inner breeserif text-center">
+                    We bring you the best quality of flavors and the healthiest tastes all around the world!
+                </div>
+            </div>
+            <div class="container">
+                <section>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="msgbox psre">
+                                <div class="embed-responsive embed-responsive-1by1">
+                                    <script src="https://f.vimeocdn.com/js/froogaloop2.min.js"></script>
+                                    <iframe id="player1" src="https://player.vimeo.com/video/76979871?api=1&player_id=player1" width="630" height="354" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                                <span class="video-1-trigger"><span class="glyphicon glyphicon-play-circle"></span><span class="text-hide">Play</span></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="msgbox">
+                                <div id="main-carousel" class="carousel slide main-carousel carousel-fade" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        @{int i = -1;}
+                                        @foreach (var item in Model.Banners)
+                                        {
+                                            i++;
+                                            if (i == 0)
+                                            {
+                                                <li data-target="#main-carousel" data-slide-to="@i" class="active"></li>
+                                            }
+                                            else
+                                            {
+                                                <li data-target="#main-carousel" data-slide-to="@i"></li>                                                
+                                            }
+                                        }                                                                                  
+                                    </ol>
+                                    @{i = -1;}
+                                    <div class="carousel-inner" role="listbox">
+                                        @foreach (var item in Model.Banners)
+                                        {
+                                            i++;
+                                            if (i == 0)
+                                            {
+                                                <div class="item active">
+                                                    <a href="@item.Link" target="_blank">
+                                                        <img src="~/images/Banner/@item.BannerImage" alt="@item.BannerText" />
+                                                    </a>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="item">
+                                                    <a href="@item.Link" target="_blank">
+                                                        <img src="~/images/Banner/@item.BannerImage" alt="@item.BannerText" />
+                                                    </a>
+                                                </div>
+                                            }
+                                        }  
+                                        @*<div class="item active">
+                                            <a href="http://www.amazon.com/Anna-and-Sarah/b/ref=bl_dp_s_web_10155629011?ie=UTF8&node=10155629011&field-lbr_brands_browse-bin=Anna+and+Sarah" target="_blank">
+                                                <img src="~/images/banner1.jpg" alt="Nuts safe from chronic disease!">
+                                            </a>
+                                        </div>
+                                        <div class="item">
+                                            <a href="http://www.amazon.com/Anna-and-Sarah/b/ref=bl_dp_s_web_10155629011?ie=UTF8&node=10155629011&field-lbr_brands_browse-bin=Anna+and+Sarah" target="_blank">
+                                                <img src="~/images/banner3.jpg" alt="Watching football or movie...">
+                                            </a>
+                                        </div>
+                                        <div class="item">
+                                            <a href="http://www.amazon.com/Anna-and-Sarah/b/ref=bl_dp_s_web_10155629011?ie=UTF8&node=10155629011&field-lbr_brands_browse-bin=Anna+and+Sarah" target="_blank">
+                                                <img src="~/images/banner1.jpg" alt="...">
+                                                <div class="carousel-caption">
+                                                    <h2>Simple Description 2</h2>
+                                                    <p>We bring you the best quality of flavors and the healthiest tastes all around the world!</p>
+                                                </div>
+                                            </a>
+                                        </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div id="product-category-menu">
+                        <ul class="list-unstyled list-inline clearfix">
+                            <li>
+                                <div style="background-image:url('../../images/Categories/@ViewBag.Nuts')">
+                                    <span>Nuts</span>
+                                    <ul>
+                                        @foreach (var item in Model.CategoryNuts)
+                                        {
+                                            <li><a href="~/Home/Product/@item.LinkUrl">@item.CatName</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div style="background-image:url('../../images/Categories/@ViewBag.DriedFruits')">
+                                    <span>Dried Fruits</span>
+                                    <ul>
+                                        @foreach (var item in Model.CategoryDriedFruits)
+                                        {
+                                            <li><a href="~/Home/Product/@item.LinkUrl">@item.CatName</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div style="background-image:url('../../images/Categories/@ViewBag.Seeds')">
+                                    <span>Seeds</span>
+                                    <ul>
+                                        @foreach (var item in Model.CategorySeeds)
+                                        {
+                                            <li><a href="~/Home/Product/@item.LinkUrl">@item.CatName</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div style="background-image:url('../../images/Categories/@ViewBag.Snacks')">
+                                    <span>Snacks</span>
+                                    <ul>
+                                        @foreach (var item in Model.CategorySnacks)
+                                        {
+                                            <li><a href="~/Home/Product/@item.LinkUrl">@item.CatName</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div style="background-image:url('../../images/Categories/@ViewBag.Gifts')">
+                                    <span>Gifts</span>
+                                    <ul>
+                                        @foreach (var item in Model.CategoryGifts)
+                                        {
+                                            <li><a href="~/Home/Product/@item.LinkUrl">@item.CatName</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="msgbox">
+                                <a href="http://www.amazon.com/Anna-and-Sarah/b/ref=bl_dp_s_web_10155629011?ie=UTF8&node=10155629011&field-lbr_brands_browse-bin=Anna+and+Sarah" target="_blank" class="msgbox-wheretobuy" title="Where to buy">
+                                    <span class="text-hide">Where to buy</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="msgbox">
+                                <a href="~/Home/TagProduct/1" title="Organic Products">
+                                    <img src="~/images/100-100-organic.png" alt="100% Organic" class="img-responsive center-block" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="msgbox">
+                                <div class="msgbox-signup">
+                                    <form id="signup-email" class="form-inline breeserif">
+                                        <h3>Sign-up & save</h3>
+                                        <h4>on your favorite snacks</h4>
+                                        <div class="clearfix">
+                                            @Html.EditorFor(model => model.MailAdress, new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Enter email" } })
+                                            <input type="button" class="btn btn-success btn-lg" name="command" value="Save" id="AjaxPost" />
+                                            <div id="content">
+
+                                            </div>
+                                        </div>
+                                        <p class="fs12">* Subscribe to Our Newsletter @ViewBag.MyErrorMessage </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <footer role="contentinfo" class="footer" id="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <ul class="col-sm-4 list-unstyled">
+                                <li><h4>Shop</h4></li>
+                                <li><a href="~/Home/Category/DriedFruit">Dried Fruits</a></li>
+                                <li><a href="~/Home/Category/Nuts">Nuts</a></li>
+                                <li><a href="~/Home/Category/Seeds_Grains">Seeds</a></li>
+                                <li><a href="~/Home/Category/Gifts">Gifts</a></li>
+                                <li><a href="~/Home/Category/Snacks">Snacks</a></li>
+                            </ul>
+                            @*<ul class="col-sm-4 list-unstyled">
+                                    <li><h4>Customer Service</h4></li>
+                                    <li><a href="">Terms & Conditions</a></li>
+                                    <li><a href="">Shipping Policy</a></li>
+                                    <li><a href="">Return Policy</a></li>
+                                    <li><a href="">Privacy Policy</a></li>
+                                </ul>*@
+                            <div class="col-sm-4">
+                                <ul class="list-unstyled">
+                                    <li><h4>Anna And Sarah</h4></li>
+                                    <li><a href="~/Home/WhoWeAre">About Us</a></li>
+                                    <li><a href="~/Home/ContactUs">Contact Us</a></li>
+                                    @*<li>Follow Us</li>*@
+                                </ul>
+                                <ul class="footer-socialnetwork socialnetwork clearfix">
+                                    <li class="email"><a href="~/Home/ContactUs" title="Email" data-toggle="tooltip" data-placement="top"></a></li>
+                                    <li class="instagram"><a href="https://www.instagram.com/anna.and.sarah/" target="_blank" title="İnstagram" data-toggle="tooltip" data-placement="top"></a></li>
+                                    <li class="twitter"><a href="https://twitter.com/Anna_and_Sarah" title="Twitter" target="_blank" data-toggle="tooltip" data-placement="top"></a></li>
+                                    <li class="facebook"><a href="https://www.facebook.com/annaandsarah/" title="Facebook" target="_blank" data-toggle="tooltip" data-placement="top"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="media">
+                                <h4>100% Statis Faction Guarentee</h4>
+                                <div class="media-left media-middle">
+                                    <img class="media-object" src="~/images/customersatisfaction-footer.png" title="100% Statis Faction Guarentee" alt="customer satisfaction" height="100" />
+                                </div>
+                                <div class="media-body">
+                                    <p><br />"We bring you the best quality of flavors and the healthiest tastes all around the world!"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom footer-copyright">
+                <div class="container">
+                    <div class="media col-sm-6">
+                        <div class="media-left media-middle">
+                            <a href="http://www.annaandsarah.com">
+                                <img class="media-object" src="~/images/favicon-1.png" title="www.annaandsarah.com" alt="Copyright Anna And Sarah" height="35" />
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p><span>&copy;</span> Copyright 2015 Anna And Sarah &reg;. All rights reserved.</p>
+                            @*<div><a style="padding-left:5px;">Privacy Policy</a> <a style="padding-left:8px;">Terms & Conditions</a></div>*@
+                        </div>
+                        @*<div class="media-right media-middle">
+                                <a href="http://www.onurboz.com" class="dbobc" target="_blank">
+                                    <img class="media-object" src="~/images/onurboz-logo.png" title="Designed by onurboz.com" alt="www.onurboz.com" height="35" />
+                                </a>
+                            </div>*@
+                    </div>
+                    @*<div class="col-sm-6">
+                            <img src="~/images/cards.png" alt="cards" class="img-responsive center-block" />
+                        </div>*@
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="~/Scripts/main.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#AjaxPost").click(function () {
+                    $("#content").html("<b>Please Wait...</b>");
+
+                    var dataObject = {
+                        MailAdress: $("#MailAdress").val()
+                    };
+
+                    $.ajax({
+                        url: "@Url.Action("Index", "Home")",
+                        type: "POST",
+                        data: dataObject,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.toString() == "Successfully Saved!") {
+                                $("#MailAdress").val('');
+                                $("#content").html("<div class='success'>" + data + "</div>");
+                            }
+                            else {
+                                $("#content").html("<div class='failed'>" + data + "</div>");
+                            }
+                        },
+                        error: function () {
+                            $("#content").html("<div class='failed'>Error! Please try again</div>");
+                        }
+                    });
+
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                //We have used keyup event to track the user enter value in the textbox.
+                $("#target").keyup(function () {
+                    //Fetching the textbox value.
+                    var query = $(this).val();
+                    //Calling GetItems method.
+                    getItems(query);
+                });
+
+                function getItems(query) {
+
+                    //Here we are using ajax get method to fetch data from the list based on the user entered value in the textbox.
+                    //We are sending query i.e textbox as data.
+                    $.ajax({
+                        url: '@Url.Action("DenemeSayfa", "Home")',
+                        data: { "query": query },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.Data != null) {
+                                if ($("#targetUL") != undefined) {
+                                    //If the UL element is not null or undefined we are clearing it, so that the result is appended in new UL every next time.
+                                    $("#targetUL").remove();
+                                }
+                                //assigning json response data to local variable. It is basically list of values.
+                                data = response.Data;
+                                //appending an UL element to show the values.
+                                $("#targetDiv").append($("<ul id='targetUL'></ul>"));
+                                //Removing previously added li elements to the list.
+                                $("#targetUL").find("li").remove();
+                                //We are iterating over the list returned by the json and for each element we are creating a li element and appending the li element to ul element.
+                                $.each(data, function (i, value) {
+                                    //On click of li element we are calling a method.
+                                    $("#targetUL").append($("<li class='targetLI' onclick='javascript:appendTextToTextBox(this)'>" + value + "</li>"));
+
+                                });
+                            }
+                            else {
+                                //If data is null the we are removing the li and ul elements.
+                                $("#targetUL").find("li").remove();
+                                $("#targetUL").remove();
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                        }
+                    });
+                }
+            });
+
+            //This method appends the text oc clicked li element to textbox.
+            function appendTextToTextBox(e) {
+                //Getting the text of selected li element.
+                var textToappend = e.innerText;
+                //setting the value attribute of textbox with selected li element.
+                $("#target").val(textToappend);
+                //Removing the ul element once selected element is set to textbox.
+                $("#targetUL").remove();
+            }
+        </script>
+        }
+    </div>
+
+
+}

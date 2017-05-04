@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AnnaAndSarahWeb.Models.tblBanner>
+
+@{
+    ViewBag.Title = "BannerList";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">
+                    @Html.ActionLink("Yeni Banner", "AddBanner")
+                </h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Banner Adı</th>
+                            <th>Banner Açıklama</th>
+                            <th>Sıra No</th>
+                            <th>Resim</th>                  
+                            <th>Güncelle</th>                  
+                            <th>Sil</th>                  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BannerHeader)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BannerText)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SiraNo)
+                                </td>
+                                <td style="width: 60px;">
+                                    <img src="~/images/Banner/@item.BannerImage" alt="Raw Almonds" class="current-product-img img-responsive center-block" />   
+                                </td>                               
+                                <td>
+                                    @Html.ActionLink("Güncelle", "UpdateBanner", new { id = item.Bid})
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sil", "DeleteBanner", new { id = item.Bid })
+                                </td>
+                            </tr>
+                           }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Banner Adı</th>
+                            <th>Banner Açıklama</th>
+                            <th>Sıra No</th>
+                            <th>Resim</th>
+                            <th>Güncelle</th>
+                            <th>Sil</th>                  
+                        </tr>
+                    </tfoot>
+                </table>
+            </div><!-- /.box-body -->
+        </div>
+    </div><!-- /.col -->
+</div><!-- /.row -->

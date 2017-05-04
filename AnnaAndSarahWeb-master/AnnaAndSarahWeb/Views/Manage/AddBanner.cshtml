@@ -1,0 +1,56 @@
+﻿@model AnnaAndSarahWeb.Models.BannerPage
+@{
+    ViewBag.Title = "tblBanner";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>Add Banner</h2>
+
+@using (Html.BeginForm("AddBanner", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="box box-danger">
+        <div class="box-body">
+            <div class="row">                
+                <div class="col-xs-3">
+                    <b>
+                        Banner Header
+                    </b>
+                    @Html.EditorFor(model => model.banner.BannerHeader, new { htmlAttributes = new { @class = "form-control", @placeholder = "Banner üzerinde gözükmeyecek" } })
+                </div>
+                <div class="col-xs-4">
+                    <b>
+                        Banner Description
+                    </b>
+                    @Html.EditorFor(model => model.banner.BannerText, new { htmlAttributes = new { @class = "form-control", @placeholder = "Banner üzerinde gözükmeyecek" } })
+                </div>
+                <div class="col-xs-5">
+                    <b>
+                        Sıra Numarası
+                    </b>
+                    @Html.EditorFor(model => model.banner.SiraNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Banner gözükme sırası" } })
+                </div>
+                <div class="col-xs-6">
+                    <b>
+                        Resim Ekle
+                    </b>
+                    <input type="file" name="file" />                    
+                </div>
+            </div>      
+            <div class="row">
+                <div class="col-xs-3">
+                    <b>
+                        URL
+                    </b>
+                    @Html.EditorFor(model => model.banner.Link, new { htmlAttributes = new { @class = "form-control", @placeholder = "Bannerın yönleneceği web adresi" } })
+                </div>
+                <div class="col-xs-4">
+                    <b>
+                        Kaydet
+                    </b>
+                    <input type="submit" name="OK" />
+                </div>                
+            </div>        
+        </div>
+    </div>
+}
+

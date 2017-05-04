@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AnnaAndSarahWeb.Models.TagPage>
+
+@{
+    ViewBag.Title = "AddCategoryTags";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>AddCategoryTags</h2>
+
+
+@using (Html.BeginForm())
+{
+<table class="table">
+    <tr>
+        <th>
+           Urunlere Tag Atama Ekrani 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.CheckBoxFor(d => item.Onay)
+            @Html.DisplayFor(modelItem => item.Tag.TagName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Tag.TagId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Tag.TagId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Tag.TagId })
+        </td>
+    </tr>
+}
+    <tr>
+        <th>
+            <input type="submit" value="Create" class="btn btn-default" />
+        </th>
+        <th></th>
+    </tr>        
+</table>
+}

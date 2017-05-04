@@ -1,0 +1,64 @@
+﻿@model AnnaAndSarahWeb.Models.PBlog
+@{
+    ViewBag.Title = "tblBanner";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>Add Banner</h2>
+
+@using (Html.BeginForm("AddBlog", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Blog Adı</h3>
+                </div>
+                <div class="box-body pad">
+                    @Html.EditorFor(model => model.Blog.BAd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Blog Adı" } })
+                </div>
+                <div class="box-header">
+                    <h3 class="box-title">Blog Açıklaması</h3>
+                </div>
+                <div class="box-body pad">
+                    @Html.EditorFor(model => model.Blog.BAciklama, new { htmlAttributes = new { @class = "form-control", @placeholder = "Blog Adı" } })
+                </div>
+                <div class="box-header">
+                    <h3 class="box-title">Blog Ana Resmi</h3>
+                </div>
+                <div class="box-body pad">
+                    <input type="file" name="file" />
+                </div>
+                <div class="box-header">
+                    <h3 class="box-title">Blog Kategorisi</h3>
+                </div>
+                <div class="box-body pad">
+                    @Html.DropDownListFor(model => model.Cid, (SelectList)ViewBag.CatList)
+                </div>
+            </div>
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">Add Blog Page<small></small></h3>                 
+                </div><!-- /.box-header -->
+                <div class="box-body pad">
+                    @Html.TextAreaFor(model => model.Blog.BText, new { @id = "editor1" })
+                    <script type="text/javascript">
+                        var editor = CKEDITOR.instances['editor1'];
+                        if (editor) { editor.destroy(true); }
+                        CKEDITOR.replace('editor1', {
+                            enterMode: CKEDITOR.ENTER_BR,
+                        });
+                        CKFinder.setupCKEditor(null, '@Url.Content("~/ckeditor/ckfinder/")');
+                    </script>
+                </div>
+            </div>
+            <div class="box">
+                @*<b>
+                    Save Blog
+                </b>*@
+                <input type="submit" name="OK" />
+            </div>
+        </div>
+    </div>
+}
+

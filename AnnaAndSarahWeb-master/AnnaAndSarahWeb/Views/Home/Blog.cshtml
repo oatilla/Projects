@@ -1,0 +1,100 @@
+﻿@model AnnaAndSarahWeb.Models.BlogPaket
+@{
+    Layout = "~/Views/Shared/AltSayfa.cshtml";
+}
+@using (Html.BeginForm("Blog", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <section role="main" class="main" id="main">
+        <div id="main-blog">
+            <div class="container container-narrow">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <article class="post post-short entry clearfix">
+                            <p class="meta-info">Posted on @Model.blog_category.Tarih in <a href="~/Home/BlogList/@Model.blog_category.Cid" rel="category tag">@Model.blog_category.CName</a> | <span class="comments-number"><a href="#comments">@Model.count comments</a></span></p>
+                            <div class="post-thumbnail">
+                                <a href="#">
+                                    <img src="~/images/Blog/@Model.blog_category.BResim" class="img-responsive center-block" />
+                                    <span class="overlay post-overlay"></span>
+                                </a>
+                            </div>
+                            <div class="post-content clearfix">
+                                <h2 class="title">@Model.blog_category.BAd </h2>
+                                <p class="fs20 georgiaserif">@Model.blog_category.BAciklama </p>
+                                <p class="fs17">
+                                    @Model.blog_category.BText
+                                </p>
+                            </div>
+                            <div class="post-comment-form">
+                                <h3 class="breeserif">Leave a comment</h3>
+                                <form autocomplete="off">
+                                    <div class="form-group">
+                                        <label for="contactInputText1">Name</label>
+                                        @*<input type="text" class="form-control input-lg breeserif" id="contactInputText1" placeholder="First Name">*@
+                                        @Html.EditorFor(model => model.comment.Name, new { htmlAttributes = new { @id = "contactInputText1", @name = "Name", @class = "form-control input-lg breeserif", @placeholder = "First Name", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.comment.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contactInputEmail1">Email address</label>
+                                        @*<input type="email" class="form-control input-lg breeserif" id="contactInputEmail1" placeholder="Email">*@
+                                        @Html.EditorFor(model => model.comment.Email, new { htmlAttributes = new { @id = "contactInputEmail1", @class = "form-control input-lg breeserif", @type="email", @placeholder = "Email", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.comment.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contactTextarea1">Topic</label>
+                                        @Html.TextAreaFor(model => model.comment.Comment, new { @rows = "3", @width = "300px", @id = "Comment", @class = "form-control input-lg breeserif", @placeholder = "Talk about more...", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.comment.Comment, "", new { @class = "text-danger" })
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-lg breeserif">Submit</button>
+                                </form>
+                            </div>
+                        </article>
+                        <h3 class="breeserif">@Model.commentList.Count() Comments</h3>
+                        <section id="comments">
+                            @foreach (var item in Model.commentList)
+                            {
+                                <article class="post post-short entry comment clearfix">
+                                    <p class="meta-info"><span class="comment-author">@item.Name</span> - @item.Tarih</p>
+                                    <div class="post-content clearfix">
+                                        <p class="fs17">@item.Comment</p>
+                                    </div>
+                                </article>
+                            }                            
+                        </section>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="widget">
+                            @*@Html.Partial("CategoryBlogDetay", null)*@
+                            <h4 class="widgettitle breeserif">Category</h4>
+                            <ul class="list-unstyled">
+                                @foreach (var item in Model.CategoryWidgetList)
+                                {
+                                    <li><a href="~/Home/BlogList/@item.Cid">@item.CName @*<span class="badge pull-right">19</span>*@</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="widget">
+                            @*@Html.Partial("PopularDetayPosts", null)*@
+                            <h4 class="widgettitle breeserif">Popular Posts</h4>
+                            <ul class="list-unstyled">
+                                @foreach (var item in Model.BlogWidgetList)
+                                {
+                                    <li><a href="~/Home/Blog/@item.UrlRewrite">@item.BAd</a></li>
+                                }
+                            </ul>
+                        </div>
+                        @*<div class="widget">
+                                <h4 class="widgettitle breeserif">Archives</h4>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">April 2016</a></li>
+                                    <li><a href="#">August 2015</a></li>
+                                    <li><a href="#">May 2011</a></li>
+                                    <li><a href="#">September 2010</a></li>
+                                </ul>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

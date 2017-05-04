@@ -1,0 +1,129 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Yönetim Paneli</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="~/Content/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/Content/css/skin-blue.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jQuery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/app.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/ckfinder/ckfinder.js"></script>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Main Header -->
+        <header class="main-header">
+
+            <!-- Logo -->
+            <a href="/Views/Home/Index" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>ANNA</b>SARAH</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b>Page</span>
+            </a>
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>               
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="@ViewBag.Logo" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>@ViewBag.Ad</p>
+                    </div>
+                </div>
+            
+                <!-- /.search form -->
+                <!-- Sidebar Menu -->
+                <ul class="sidebar-menu">
+                    <!-- Optionally, you can add icons to the links -->
+                    <li class="active"><a href="~/Manage/GetMainProductList"><i class="fa fa-link"></i><span>Ana Ürün Grupları</span></a></li>
+                    <li><a href="~/Manage/AddTags"><i class="fa fa-link"></i><span>Tag Ekle</span></a></li>
+                    <li><a href="~/Manage/TagList"><i class="fa fa-link"></i><span>Tag Listesi</span></a></li>
+                    <li><a href="~/Manage/SubscribeList"><i class="fa fa-link"></i><span>Subscribe List</span></a></li>
+                    <li><a href="~/Manage/MessageList"><i class="fa fa-link"></i><span>Site Messages</span></a></li>
+                    <li><a href="~/Manage/BannerList"><i class="fa fa-link"></i><span>Banner List</span></a></li>
+                    <li><a href="~/Manage/BlogList"><i class="fa fa-link"></i><span>Blog List</span></a></li>
+                    <li><a href="~/Manage/AddBlog"><i class="fa fa-link"></i><span>Add Blog</span></a></li>
+                    <li><a href="~/Manage/BlogCategoryList"><i class="fa fa-link"></i><span>Blog Category List</span></a></li>
+                    <li><a href="~/Manage/AddBlogCategory"><i class="fa fa-link"></i><span>Add Blog Category</span></a></li>
+                    <li><a href="~/Manage/CommentList"><i class="fa fa-link"></i><span>Add Blog Comment</span></a></li>
+                    <li><a href="~/Manage/UserList"><i class="fa fa-link"></i><span>User List</span></a></li>
+                    <li><a href="~/Manage/AddUser"><i class="fa fa-link"></i><span>Add User</span></a></li>
+                    <li><a href="~/Home/Index"><i class="fa fa-link"></i><span>Go Main Page</span></a></li>
+                    @*<li><a href="#"><i class="fa fa-link"></i><span>Add Blog</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i><span>Blog List</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i><span>Comment</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i><span>Messages from contact</span></a></li>*@                    
+                </ul>
+                <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header"></section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                @RenderBody()
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                
+
+            </div>
+            <!-- Default to the left -->
+            <strong>&copy; 2010 <a href="#">Anna And Sarah</a></strong>
+
+        </footer>
+
+        <!-- Control Sidebar -->
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+
+
+</body>
+
+
+</html>

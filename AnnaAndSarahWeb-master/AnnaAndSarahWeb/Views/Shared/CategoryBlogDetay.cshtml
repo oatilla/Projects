@@ -1,0 +1,10 @@
+﻿@using (Html.BeginForm("CategoryBlogDetay", "Home"))
+{
+    <h4 class="widgettitle breeserif">Category</h4>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.BlogCategoryList)
+            {
+                <li><a href="~/Home/BlogList/@item.Cid">@item.BAd <span class="badge pull-right">19</span></a></li>
+            }            
+        </ul>
+}

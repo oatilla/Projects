@@ -1,0 +1,42 @@
+﻿@model AnnaAndSarahWeb.Models.CategoryTree
+
+
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/AltSayfa.cshtml";
+}
+<section class="parent-categorys" role="main">
+    <div class="container">
+        <div class="clearfix">
+            <div id="product-category-menu">
+                <ul class="list-unstyled list-inline clearfix">
+                    @foreach (var main in Model.CategoryListMain)
+                    {
+                        <li>
+                            <div style="background-image:url('../../images/Categories/@main.Image')">
+                                <span>
+                                <a href="~/Home/GetCategoryList/@main.Cid">
+                                    @Html.DisplayFor(y => main.CatName)
+                                </a>
+                                </span>
+                                <ul>
+                                    @foreach (var child in Model.CategoryListChild)
+                                    {
+                                        if (child.CMainId == main.Cid)
+                                        {
+                                            <li>
+                                                <a href="~/Home/Product/@child.LinkUrl">
+                                                    @Html.DisplayFor(x => child.CatName)
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
