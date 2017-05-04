@@ -1,0 +1,1263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB090928093827Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_PortalHaber_Banner">
+          <Key>
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="Bid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BannerName" Type="varchar" MaxLength="255" />
+          <Property Name="IsEnabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Banner_Site_Relation">
+          <Key>
+            <PropertyRef Name="SB_Id" />
+          </Key>
+          <Property Name="SB_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteId" Type="int" />
+          <Property Name="BannerId" Type="int" />
+          <Property Name="BTId" Type="int" />
+          <Property Name="BannerCount" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Banner_VeriGelmeTipi">
+          <Key>
+            <PropertyRef Name="BT_Id" />
+          </Key>
+          <Property Name="BT_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Icerik">
+          <Key>
+            <PropertyRef Name="HaberId" />
+          </Key>
+          <Property Name="HaberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HaberBaslik" Type="varchar" MaxLength="255" />
+          <Property Name="HaberAciklama" Type="varchar(max)" />
+          <Property Name="KategoriId" Type="int" />
+          <Property Name="HaberUrl" Type="varchar" MaxLength="50" />
+          <Property Name="KaynakId" Type="int" />
+          <Property Name="Site_Id" Type="int" />
+          <Property Name="Onay_Tarih" Type="datetime" />
+          <Property Name="Haber_Resim" Type="varchar(max)" />
+          <Property Name="Onay" Type="bit" />
+          <Property Name="Banner_Tip" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Icerik2">
+          <Key>
+            <PropertyRef Name="HDid" />
+          </Key>
+          <Property Name="HDid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HaberMetni" Type="text" />
+          <Property Name="Etiketler" Type="varchar(max)" />
+          <Property Name="YazarId" Type="int" />
+          <Property Name="HaberId" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_IP">
+          <Key>
+            <PropertyRef Name="IP_ID" />
+          </Key>
+          <Property Name="IP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Haber_Id" Type="int" />
+          <Property Name="IP" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_kategori">
+          <Key>
+            <PropertyRef Name="Kid" />
+          </Key>
+          <Property Name="Kid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Kaynak">
+          <Key>
+            <PropertyRef Name="KaynakId" />
+          </Key>
+          <Property Name="KaynakId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuAciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuLink" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sıra" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Menu_Tip_Relation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipId" Type="int" />
+          <Property Name="MenuId" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_OkunmaSayisi">
+          <Key>
+            <PropertyRef Name="OS_Id" />
+          </Key>
+          <Property Name="OS_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Haber_ID" Type="int" />
+          <Property Name="OkunmaSayisi" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_PopulerHaberler_Zaman">
+          <Key>
+            <PropertyRef Name="PHZ_Id" />
+          </Key>
+          <Property Name="PHZ_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Zaman" Type="int" />
+          <Property Name="SiteId" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Site">
+          <Key>
+            <PropertyRef Name="Site_Id" />
+          </Key>
+          <Property Name="Site_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Site_Adi" Type="varchar" MaxLength="50" />
+          <Property Name="Site_Grubu" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_SiteGrubu">
+          <Key>
+            <PropertyRef Name="Site_Grup_Id" />
+          </Key>
+          <Property Name="Site_Grup_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Site_Grup_Aciklama" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Tip">
+          <Key>
+            <PropertyRef Name="Tip_Id" />
+          </Key>
+          <Property Name="Tip_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip_Adi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Yazar">
+          <Key>
+            <PropertyRef Name="YazarId" />
+          </Key>
+          <Property Name="YazarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YName" Type="varchar" MaxLength="255" />
+          <Property Name="Tipi" Type="int" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+          <Property Name="EPosta" Type="varchar" MaxLength="50" />
+          <Property Name="Resim" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_YazarParaAyar">
+          <Key>
+            <PropertyRef Name="YPid" />
+          </Key>
+          <Property Name="YPid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Para" Type="float" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="SiteGrupId" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_YazarParaTalep">
+          <Key>
+            <PropertyRef Name="pt_id" />
+          </Key>
+          <Property Name="pt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yazar_Id" Type="int" />
+          <Property Name="Site_Grup_Id" Type="int" />
+          <Property Name="Talep_Tarihi" Type="datetime" />
+          <Property Name="Talep_Miktar" Type="float" />
+          <Property Name="Onay_Tarihi" Type="datetime" />
+          <Property Name="Onay_Miktar" Type="float" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_YazarSiteRelation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YazarId" Type="int" />
+          <Property Name="SiteId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB090928093827.dbo.VWBANNER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VWBANNER">
+          <Key>
+            <PropertyRef Name="SbId" />
+          </Key>
+          <Property Name="SbId" Type="int" Nullable="false" />
+          <Property Name="SiteAdi" Type="varchar" MaxLength="50" />
+          <Property Name="BannerAdi" Type="varchar" MaxLength="255" />
+          <Property Name="BannerAdet" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB090928093827.dbo.VWYHABERLIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VWYHABERLIST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="EPosta" Type="varchar" MaxLength="50" />
+          <Property Name="HaberBaslik" Type="varchar" MaxLength="255" />
+          <Property Name="HaberAciklama" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner">
+          <End Role="tbl_PortalHaber_Banner" Type="Self.tbl_PortalHaber_Banner" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Banner_Site_Relation" Type="Self.tbl_PortalHaber_Banner_Site_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Banner">
+              <PropertyRef Name="Bid" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Banner_Site_Relation">
+              <PropertyRef Name="BannerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi">
+          <End Role="tbl_PortalHaber_Banner_VeriGelmeTipi" Type="Self.tbl_PortalHaber_Banner_VeriGelmeTipi" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Banner_Site_Relation" Type="Self.tbl_PortalHaber_Banner_Site_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Banner_VeriGelmeTipi">
+              <PropertyRef Name="BT_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Banner_Site_Relation">
+              <PropertyRef Name="BTId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori">
+          <End Role="tbl_PortalHaber_kategori" Type="Self.tbl_PortalHaber_kategori" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_kategori">
+              <PropertyRef Name="Kid" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak">
+          <End Role="tbl_PortalHaber_Kaynak" Type="Self.tbl_PortalHaber_Kaynak" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Kaynak">
+              <PropertyRef Name="KaynakId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="KaynakId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site">
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="Site_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik">
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_IP" Type="Self.tbl_PortalHaber_IP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="HaberId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_IP">
+              <PropertyRef Name="Haber_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip">
+          <End Role="tbl_PortalHaber_Tip" Type="Self.tbl_PortalHaber_Tip" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Menu_Tip_Relation" Type="Self.tbl_PortalHaber_Menu_Tip_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Tip">
+              <PropertyRef Name="Tip_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Menu_Tip_Relation">
+              <PropertyRef Name="TipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik">
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_OkunmaSayisi" Type="Self.tbl_PortalHaber_OkunmaSayisi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="HaberId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_OkunmaSayisi">
+              <PropertyRef Name="Haber_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site">
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_PopulerHaberler_Zaman" Type="Self.tbl_PortalHaber_PopulerHaberler_Zaman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_PopulerHaberler_Zaman">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu">
+          <End Role="tbl_PortalHaber_Menu" Type="Self.tbl_PortalHaber_Menu" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Menu_Tip_Relation" Type="Self.tbl_PortalHaber_Menu_Tip_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Menu_Tip_Relation">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu">
+          <End Role="tbl_PortalHaber_SiteGrubu" Type="Self.tbl_PortalHaber_SiteGrubu" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_SiteGrubu">
+              <PropertyRef Name="Site_Grup_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Grubu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site">
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Banner_Site_Relation" Type="Self.tbl_PortalHaber_Banner_Site_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Banner_Site_Relation">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip">
+          <End Role="tbl_PortalHaber_Tip" Type="Self.tbl_PortalHaber_Tip" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Yazar" Type="Self.tbl_PortalHaber_Yazar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Tip">
+              <PropertyRef Name="Tip_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Yazar">
+              <PropertyRef Name="Tipi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu">
+          <End Role="tbl_PortalHaber_SiteGrubu" Type="Self.tbl_PortalHaber_SiteGrubu" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_YazarParaAyar" Type="Self.tbl_PortalHaber_YazarParaAyar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_SiteGrubu">
+              <PropertyRef Name="Site_Grup_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_YazarParaAyar">
+              <PropertyRef Name="SiteGrupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar">
+          <End Role="tbl_PortalHaber_Yazar" Type="Self.tbl_PortalHaber_Yazar" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_YazarParaTalep" Type="Self.tbl_PortalHaber_YazarParaTalep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Yazar">
+              <PropertyRef Name="YazarId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_YazarParaTalep">
+              <PropertyRef Name="Yazar_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site">
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_YazarSiteRelation" Type="Self.tbl_PortalHaber_YazarSiteRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_YazarSiteRelation">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar">
+          <End Role="tbl_PortalHaber_Yazar" Type="Self.tbl_PortalHaber_Yazar" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_YazarSiteRelation" Type="Self.tbl_PortalHaber_YazarSiteRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Yazar">
+              <PropertyRef Name="YazarId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_YazarSiteRelation">
+              <PropertyRef Name="YazarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB090928093827ModelStoreContainer">
+          <EntitySet Name="tbl_PortalHaber_Banner" EntityType="Self.tbl_PortalHaber_Banner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Banner_Site_Relation" EntityType="Self.tbl_PortalHaber_Banner_Site_Relation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Banner_VeriGelmeTipi" EntityType="Self.tbl_PortalHaber_Banner_VeriGelmeTipi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Icerik" EntityType="Self.tbl_PortalHaber_Icerik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Icerik2" EntityType="Self.tbl_PortalHaber_Icerik2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_IP" EntityType="Self.tbl_PortalHaber_IP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_kategori" EntityType="Self.tbl_PortalHaber_kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Kaynak" EntityType="Self.tbl_PortalHaber_Kaynak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Menu" EntityType="Self.tbl_PortalHaber_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Menu_Tip_Relation" EntityType="Self.tbl_PortalHaber_Menu_Tip_Relation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_OkunmaSayisi" EntityType="Self.tbl_PortalHaber_OkunmaSayisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_PopulerHaberler_Zaman" EntityType="Self.tbl_PortalHaber_PopulerHaberler_Zaman" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Site" EntityType="Self.tbl_PortalHaber_Site" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_SiteGrubu" EntityType="Self.tbl_PortalHaber_SiteGrubu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Tip" EntityType="Self.tbl_PortalHaber_Tip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_Yazar" EntityType="Self.tbl_PortalHaber_Yazar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_YazarParaAyar" EntityType="Self.tbl_PortalHaber_YazarParaAyar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_YazarParaTalep" EntityType="Self.tbl_PortalHaber_YazarParaTalep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PortalHaber_YazarSiteRelation" EntityType="Self.tbl_PortalHaber_YazarSiteRelation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VWBANNER" EntityType="Self.VWBANNER" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VWBANNER].[SbId] AS [SbId], 
+    [VWBANNER].[SiteAdi] AS [SiteAdi], 
+    [VWBANNER].[BannerAdi] AS [BannerAdi], 
+    [VWBANNER].[BannerAdet] AS [BannerAdet]
+    FROM [dbo].[VWBANNER] AS [VWBANNER]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VWYHABERLIST" EntityType="Self.VWYHABERLIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VWYHABERLIST].[id] AS [id], 
+    [VWYHABERLIST].[EPosta] AS [EPosta], 
+    [VWYHABERLIST].[HaberBaslik] AS [HaberBaslik], 
+    [VWYHABERLIST].[HaberAciklama] AS [HaberAciklama]
+    FROM [dbo].[VWYHABERLIST] AS [VWYHABERLIST]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner" Association="Self.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner">
+            <End Role="tbl_PortalHaber_Banner" EntitySet="tbl_PortalHaber_Banner" />
+            <End Role="tbl_PortalHaber_Banner_Site_Relation" EntitySet="tbl_PortalHaber_Banner_Site_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi" Association="Self.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi">
+            <End Role="tbl_PortalHaber_Banner_VeriGelmeTipi" EntitySet="tbl_PortalHaber_Banner_VeriGelmeTipi" />
+            <End Role="tbl_PortalHaber_Banner_Site_Relation" EntitySet="tbl_PortalHaber_Banner_Site_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori" Association="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori">
+            <End Role="tbl_PortalHaber_kategori" EntitySet="tbl_PortalHaber_kategori" />
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak" Association="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak">
+            <End Role="tbl_PortalHaber_Kaynak" EntitySet="tbl_PortalHaber_Kaynak" />
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site" Association="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site">
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik" Association="Self.FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik">
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+            <End Role="tbl_PortalHaber_IP" EntitySet="tbl_PortalHaber_IP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip" Association="Self.FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip">
+            <End Role="tbl_PortalHaber_Tip" EntitySet="tbl_PortalHaber_Tip" />
+            <End Role="tbl_PortalHaber_Menu_Tip_Relation" EntitySet="tbl_PortalHaber_Menu_Tip_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik" Association="Self.FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik">
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+            <End Role="tbl_PortalHaber_OkunmaSayisi" EntitySet="tbl_PortalHaber_OkunmaSayisi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site" Association="Self.FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site">
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+            <End Role="tbl_PortalHaber_PopulerHaberler_Zaman" EntitySet="tbl_PortalHaber_PopulerHaberler_Zaman" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu" Association="Self.FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu">
+            <End Role="tbl_PortalHaber_Menu" EntitySet="tbl_PortalHaber_Menu" />
+            <End Role="tbl_PortalHaber_Menu_Tip_Relation" EntitySet="tbl_PortalHaber_Menu_Tip_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu" Association="Self.FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu">
+            <End Role="tbl_PortalHaber_SiteGrubu" EntitySet="tbl_PortalHaber_SiteGrubu" />
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site" Association="Self.FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site">
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+            <End Role="tbl_PortalHaber_Banner_Site_Relation" EntitySet="tbl_PortalHaber_Banner_Site_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip" Association="Self.FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip">
+            <End Role="tbl_PortalHaber_Tip" EntitySet="tbl_PortalHaber_Tip" />
+            <End Role="tbl_PortalHaber_Yazar" EntitySet="tbl_PortalHaber_Yazar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu" Association="Self.FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu">
+            <End Role="tbl_PortalHaber_SiteGrubu" EntitySet="tbl_PortalHaber_SiteGrubu" />
+            <End Role="tbl_PortalHaber_YazarParaAyar" EntitySet="tbl_PortalHaber_YazarParaAyar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar" Association="Self.FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar">
+            <End Role="tbl_PortalHaber_Yazar" EntitySet="tbl_PortalHaber_Yazar" />
+            <End Role="tbl_PortalHaber_YazarParaTalep" EntitySet="tbl_PortalHaber_YazarParaTalep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site" Association="Self.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site">
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+            <End Role="tbl_PortalHaber_YazarSiteRelation" EntitySet="tbl_PortalHaber_YazarSiteRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar" Association="Self.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar">
+            <End Role="tbl_PortalHaber_Yazar" EntitySet="tbl_PortalHaber_Yazar" />
+            <End Role="tbl_PortalHaber_YazarSiteRelation" EntitySet="tbl_PortalHaber_YazarSiteRelation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB090928093827Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_PortalHaber_Banner">
+          <Key>
+            <PropertyRef Name="Bid" />
+          </Key>
+          <Property Name="Bid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BannerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <NavigationProperty Name="tbl_PortalHaber_Banner_Site_Relation" Relationship="Self.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner" FromRole="tbl_PortalHaber_Banner" ToRole="tbl_PortalHaber_Banner_Site_Relation" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Banner_Site_Relation">
+          <Key>
+            <PropertyRef Name="SB_Id" />
+          </Key>
+          <Property Name="SB_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteId" Type="Int32" />
+          <Property Name="BannerId" Type="Int32" />
+          <Property Name="BTId" Type="Int32" />
+          <Property Name="BannerCount" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_Banner" Relationship="Self.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner" FromRole="tbl_PortalHaber_Banner_Site_Relation" ToRole="tbl_PortalHaber_Banner" />
+          <NavigationProperty Name="tbl_PortalHaber_Banner_VeriGelmeTipi" Relationship="Self.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi" FromRole="tbl_PortalHaber_Banner_Site_Relation" ToRole="tbl_PortalHaber_Banner_VeriGelmeTipi" />
+          <NavigationProperty Name="tbl_PortalHaber_Site" Relationship="Self.FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site" FromRole="tbl_PortalHaber_Banner_Site_Relation" ToRole="tbl_PortalHaber_Site" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Banner_VeriGelmeTipi">
+          <Key>
+            <PropertyRef Name="BT_Id" />
+          </Key>
+          <Property Name="BT_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_PortalHaber_Banner_Site_Relation" Relationship="Self.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi" FromRole="tbl_PortalHaber_Banner_VeriGelmeTipi" ToRole="tbl_PortalHaber_Banner_Site_Relation" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Icerik">
+          <Key>
+            <PropertyRef Name="HaberId" />
+          </Key>
+          <Property Name="HaberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HaberBaslik" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HaberAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="HaberUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KaynakId" Type="Int32" />
+          <Property Name="Site_Id" Type="Int32" />
+          <Property Name="Onay_Tarih" Type="DateTime" Precision="3" />
+          <Property Name="Haber_Resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Onay" Type="Boolean" />
+          <Property Name="Banner_Tip" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_kategori" Relationship="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori" FromRole="tbl_PortalHaber_Icerik" ToRole="tbl_PortalHaber_kategori" />
+          <NavigationProperty Name="tbl_PortalHaber_Kaynak" Relationship="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak" FromRole="tbl_PortalHaber_Icerik" ToRole="tbl_PortalHaber_Kaynak" />
+          <NavigationProperty Name="tbl_PortalHaber_Site" Relationship="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site" FromRole="tbl_PortalHaber_Icerik" ToRole="tbl_PortalHaber_Site" />
+          <NavigationProperty Name="tbl_PortalHaber_IP" Relationship="Self.FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik" FromRole="tbl_PortalHaber_Icerik" ToRole="tbl_PortalHaber_IP" />
+          <NavigationProperty Name="tbl_PortalHaber_OkunmaSayisi" Relationship="Self.FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik" FromRole="tbl_PortalHaber_Icerik" ToRole="tbl_PortalHaber_OkunmaSayisi" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Icerik2">
+          <Key>
+            <PropertyRef Name="HDid" />
+          </Key>
+          <Property Name="HDid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HaberMetni" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Etiketler" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YazarId" Type="Int32" />
+          <Property Name="HaberId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_IP">
+          <Key>
+            <PropertyRef Name="IP_ID" />
+          </Key>
+          <Property Name="IP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Haber_Id" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_PortalHaber_Icerik" Relationship="Self.FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik" FromRole="tbl_PortalHaber_IP" ToRole="tbl_PortalHaber_Icerik" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_kategori">
+          <Key>
+            <PropertyRef Name="Kid" />
+          </Key>
+          <Property Name="Kid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_PortalHaber_Icerik" Relationship="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori" FromRole="tbl_PortalHaber_kategori" ToRole="tbl_PortalHaber_Icerik" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Kaynak">
+          <Key>
+            <PropertyRef Name="KaynakId" />
+          </Key>
+          <Property Name="KaynakId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_PortalHaber_Icerik" Relationship="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak" FromRole="tbl_PortalHaber_Kaynak" ToRole="tbl_PortalHaber_Icerik" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sıra" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_Menu_Tip_Relation" Relationship="Self.FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu" FromRole="tbl_PortalHaber_Menu" ToRole="tbl_PortalHaber_Menu_Tip_Relation" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Menu_Tip_Relation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipId" Type="Int32" />
+          <Property Name="MenuId" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_Menu" Relationship="Self.FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu" FromRole="tbl_PortalHaber_Menu_Tip_Relation" ToRole="tbl_PortalHaber_Menu" />
+          <NavigationProperty Name="tbl_PortalHaber_Tip" Relationship="Self.FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip" FromRole="tbl_PortalHaber_Menu_Tip_Relation" ToRole="tbl_PortalHaber_Tip" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_OkunmaSayisi">
+          <Key>
+            <PropertyRef Name="OS_Id" />
+          </Key>
+          <Property Name="OS_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Haber_ID" Type="Int32" />
+          <Property Name="OkunmaSayisi" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_Icerik" Relationship="Self.FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik" FromRole="tbl_PortalHaber_OkunmaSayisi" ToRole="tbl_PortalHaber_Icerik" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_PopulerHaberler_Zaman">
+          <Key>
+            <PropertyRef Name="PHZ_Id" />
+          </Key>
+          <Property Name="PHZ_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Zaman" Type="Int32" />
+          <Property Name="SiteId" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_Site" Relationship="Self.FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site" FromRole="tbl_PortalHaber_PopulerHaberler_Zaman" ToRole="tbl_PortalHaber_Site" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Site">
+          <Key>
+            <PropertyRef Name="Site_Id" />
+          </Key>
+          <Property Name="Site_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Site_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Site_Grubu" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_Banner_Site_Relation" Relationship="Self.FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site" FromRole="tbl_PortalHaber_Site" ToRole="tbl_PortalHaber_Banner_Site_Relation" />
+          <NavigationProperty Name="tbl_PortalHaber_Icerik" Relationship="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site" FromRole="tbl_PortalHaber_Site" ToRole="tbl_PortalHaber_Icerik" />
+          <NavigationProperty Name="tbl_PortalHaber_PopulerHaberler_Zaman" Relationship="Self.FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site" FromRole="tbl_PortalHaber_Site" ToRole="tbl_PortalHaber_PopulerHaberler_Zaman" />
+          <NavigationProperty Name="tbl_PortalHaber_SiteGrubu" Relationship="Self.FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu" FromRole="tbl_PortalHaber_Site" ToRole="tbl_PortalHaber_SiteGrubu" />
+          <NavigationProperty Name="tbl_PortalHaber_YazarSiteRelation" Relationship="Self.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site" FromRole="tbl_PortalHaber_Site" ToRole="tbl_PortalHaber_YazarSiteRelation" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_SiteGrubu">
+          <Key>
+            <PropertyRef Name="Site_Grup_Id" />
+          </Key>
+          <Property Name="Site_Grup_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Site_Grup_Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_PortalHaber_Site" Relationship="Self.FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu" FromRole="tbl_PortalHaber_SiteGrubu" ToRole="tbl_PortalHaber_Site" />
+          <NavigationProperty Name="tbl_PortalHaber_YazarParaAyar" Relationship="Self.FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu" FromRole="tbl_PortalHaber_SiteGrubu" ToRole="tbl_PortalHaber_YazarParaAyar" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Tip">
+          <Key>
+            <PropertyRef Name="Tip_Id" />
+          </Key>
+          <Property Name="Tip_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_PortalHaber_Menu_Tip_Relation" Relationship="Self.FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip" FromRole="tbl_PortalHaber_Tip" ToRole="tbl_PortalHaber_Menu_Tip_Relation" />
+          <NavigationProperty Name="tbl_PortalHaber_Yazar" Relationship="Self.FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip" FromRole="tbl_PortalHaber_Tip" ToRole="tbl_PortalHaber_Yazar" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_Yazar">
+          <Key>
+            <PropertyRef Name="YazarId" />
+          </Key>
+          <Property Name="YazarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Tipi" Type="Int32" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EPosta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Resim" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_PortalHaber_Tip" Relationship="Self.FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip" FromRole="tbl_PortalHaber_Yazar" ToRole="tbl_PortalHaber_Tip" />
+          <NavigationProperty Name="tbl_PortalHaber_YazarParaTalep" Relationship="Self.FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar" FromRole="tbl_PortalHaber_Yazar" ToRole="tbl_PortalHaber_YazarParaTalep" />
+          <NavigationProperty Name="tbl_PortalHaber_YazarSiteRelation" Relationship="Self.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar" FromRole="tbl_PortalHaber_Yazar" ToRole="tbl_PortalHaber_YazarSiteRelation" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_YazarParaAyar">
+          <Key>
+            <PropertyRef Name="YPid" />
+          </Key>
+          <Property Name="YPid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Para" Type="Double" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="SiteGrupId" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_SiteGrubu" Relationship="Self.FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu" FromRole="tbl_PortalHaber_YazarParaAyar" ToRole="tbl_PortalHaber_SiteGrubu" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_YazarParaTalep">
+          <Key>
+            <PropertyRef Name="pt_id" />
+          </Key>
+          <Property Name="pt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yazar_Id" Type="Int32" />
+          <Property Name="Site_Grup_Id" Type="Int32" />
+          <Property Name="Talep_Tarihi" Type="DateTime" Precision="3" />
+          <Property Name="Talep_Miktar" Type="Double" />
+          <Property Name="Onay_Tarihi" Type="DateTime" Precision="3" />
+          <Property Name="Onay_Miktar" Type="Double" />
+          <NavigationProperty Name="tbl_PortalHaber_Yazar" Relationship="Self.FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar" FromRole="tbl_PortalHaber_YazarParaTalep" ToRole="tbl_PortalHaber_Yazar" />
+        </EntityType>
+        <EntityType Name="tbl_PortalHaber_YazarSiteRelation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YazarId" Type="Int32" />
+          <Property Name="SiteId" Type="Int32" />
+          <NavigationProperty Name="tbl_PortalHaber_Site" Relationship="Self.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site" FromRole="tbl_PortalHaber_YazarSiteRelation" ToRole="tbl_PortalHaber_Site" />
+          <NavigationProperty Name="tbl_PortalHaber_Yazar" Relationship="Self.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar" FromRole="tbl_PortalHaber_YazarSiteRelation" ToRole="tbl_PortalHaber_Yazar" />
+        </EntityType>
+        <EntityType Name="VWBANNER">
+          <Key>
+            <PropertyRef Name="SbId" />
+          </Key>
+          <Property Name="SbId" Type="Int32" Nullable="false" />
+          <Property Name="SiteAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BannerAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BannerAdet" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VWYHABERLIST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="EPosta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HaberBaslik" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HaberAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner">
+          <End Role="tbl_PortalHaber_Banner" Type="Self.tbl_PortalHaber_Banner" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Banner_Site_Relation" Type="Self.tbl_PortalHaber_Banner_Site_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Banner">
+              <PropertyRef Name="Bid" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Banner_Site_Relation">
+              <PropertyRef Name="BannerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi">
+          <End Role="tbl_PortalHaber_Banner_VeriGelmeTipi" Type="Self.tbl_PortalHaber_Banner_VeriGelmeTipi" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Banner_Site_Relation" Type="Self.tbl_PortalHaber_Banner_Site_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Banner_VeriGelmeTipi">
+              <PropertyRef Name="BT_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Banner_Site_Relation">
+              <PropertyRef Name="BTId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site">
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Banner_Site_Relation" Type="Self.tbl_PortalHaber_Banner_Site_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Banner_Site_Relation">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori">
+          <End Role="tbl_PortalHaber_kategori" Type="Self.tbl_PortalHaber_kategori" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_kategori">
+              <PropertyRef Name="Kid" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak">
+          <End Role="tbl_PortalHaber_Kaynak" Type="Self.tbl_PortalHaber_Kaynak" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Kaynak">
+              <PropertyRef Name="KaynakId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="KaynakId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site">
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="Site_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik">
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_IP" Type="Self.tbl_PortalHaber_IP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="HaberId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_IP">
+              <PropertyRef Name="Haber_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik">
+          <End Role="tbl_PortalHaber_Icerik" Type="Self.tbl_PortalHaber_Icerik" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_OkunmaSayisi" Type="Self.tbl_PortalHaber_OkunmaSayisi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Icerik">
+              <PropertyRef Name="HaberId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_OkunmaSayisi">
+              <PropertyRef Name="Haber_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu">
+          <End Role="tbl_PortalHaber_Menu" Type="Self.tbl_PortalHaber_Menu" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Menu_Tip_Relation" Type="Self.tbl_PortalHaber_Menu_Tip_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Menu_Tip_Relation">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip">
+          <End Role="tbl_PortalHaber_Tip" Type="Self.tbl_PortalHaber_Tip" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Menu_Tip_Relation" Type="Self.tbl_PortalHaber_Menu_Tip_Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Tip">
+              <PropertyRef Name="Tip_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Menu_Tip_Relation">
+              <PropertyRef Name="TipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site">
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_PopulerHaberler_Zaman" Type="Self.tbl_PortalHaber_PopulerHaberler_Zaman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_PopulerHaberler_Zaman">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu">
+          <End Role="tbl_PortalHaber_SiteGrubu" Type="Self.tbl_PortalHaber_SiteGrubu" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_SiteGrubu">
+              <PropertyRef Name="Site_Grup_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Grubu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site">
+          <End Role="tbl_PortalHaber_Site" Type="Self.tbl_PortalHaber_Site" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_YazarSiteRelation" Type="Self.tbl_PortalHaber_YazarSiteRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_YazarSiteRelation">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu">
+          <End Role="tbl_PortalHaber_SiteGrubu" Type="Self.tbl_PortalHaber_SiteGrubu" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_YazarParaAyar" Type="Self.tbl_PortalHaber_YazarParaAyar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_SiteGrubu">
+              <PropertyRef Name="Site_Grup_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_YazarParaAyar">
+              <PropertyRef Name="SiteGrupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip">
+          <End Role="tbl_PortalHaber_Tip" Type="Self.tbl_PortalHaber_Tip" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_Yazar" Type="Self.tbl_PortalHaber_Yazar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Tip">
+              <PropertyRef Name="Tip_Id" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_Yazar">
+              <PropertyRef Name="Tipi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar">
+          <End Role="tbl_PortalHaber_Yazar" Type="Self.tbl_PortalHaber_Yazar" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_YazarParaTalep" Type="Self.tbl_PortalHaber_YazarParaTalep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Yazar">
+              <PropertyRef Name="YazarId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_YazarParaTalep">
+              <PropertyRef Name="Yazar_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar">
+          <End Role="tbl_PortalHaber_Yazar" Type="Self.tbl_PortalHaber_Yazar" Multiplicity="0..1" />
+          <End Role="tbl_PortalHaber_YazarSiteRelation" Type="Self.tbl_PortalHaber_YazarSiteRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PortalHaber_Yazar">
+              <PropertyRef Name="YazarId" />
+            </Principal>
+            <Dependent Role="tbl_PortalHaber_YazarSiteRelation">
+              <PropertyRef Name="YazarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB090928093827Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_PortalHaber_Banner" EntityType="Self.tbl_PortalHaber_Banner" />
+          <EntitySet Name="tbl_PortalHaber_Banner_Site_Relation" EntityType="Self.tbl_PortalHaber_Banner_Site_Relation" />
+          <EntitySet Name="tbl_PortalHaber_Banner_VeriGelmeTipi" EntityType="Self.tbl_PortalHaber_Banner_VeriGelmeTipi" />
+          <EntitySet Name="tbl_PortalHaber_Icerik" EntityType="Self.tbl_PortalHaber_Icerik" />
+          <EntitySet Name="tbl_PortalHaber_Icerik2" EntityType="Self.tbl_PortalHaber_Icerik2" />
+          <EntitySet Name="tbl_PortalHaber_IP" EntityType="Self.tbl_PortalHaber_IP" />
+          <EntitySet Name="tbl_PortalHaber_kategori" EntityType="Self.tbl_PortalHaber_kategori" />
+          <EntitySet Name="tbl_PortalHaber_Kaynak" EntityType="Self.tbl_PortalHaber_Kaynak" />
+          <EntitySet Name="tbl_PortalHaber_Menu" EntityType="Self.tbl_PortalHaber_Menu" />
+          <EntitySet Name="tbl_PortalHaber_Menu_Tip_Relation" EntityType="Self.tbl_PortalHaber_Menu_Tip_Relation" />
+          <EntitySet Name="tbl_PortalHaber_OkunmaSayisi" EntityType="Self.tbl_PortalHaber_OkunmaSayisi" />
+          <EntitySet Name="tbl_PortalHaber_PopulerHaberler_Zaman" EntityType="Self.tbl_PortalHaber_PopulerHaberler_Zaman" />
+          <EntitySet Name="tbl_PortalHaber_Site" EntityType="Self.tbl_PortalHaber_Site" />
+          <EntitySet Name="tbl_PortalHaber_SiteGrubu" EntityType="Self.tbl_PortalHaber_SiteGrubu" />
+          <EntitySet Name="tbl_PortalHaber_Tip" EntityType="Self.tbl_PortalHaber_Tip" />
+          <EntitySet Name="tbl_PortalHaber_Yazar" EntityType="Self.tbl_PortalHaber_Yazar" />
+          <EntitySet Name="tbl_PortalHaber_YazarParaAyar" EntityType="Self.tbl_PortalHaber_YazarParaAyar" />
+          <EntitySet Name="tbl_PortalHaber_YazarParaTalep" EntityType="Self.tbl_PortalHaber_YazarParaTalep" />
+          <EntitySet Name="tbl_PortalHaber_YazarSiteRelation" EntityType="Self.tbl_PortalHaber_YazarSiteRelation" />
+          <EntitySet Name="VWBANNERs" EntityType="Self.VWBANNER" />
+          <EntitySet Name="VWYHABERLISTs" EntityType="Self.VWYHABERLIST" />
+          <AssociationSet Name="FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner" Association="Self.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner">
+            <End Role="tbl_PortalHaber_Banner" EntitySet="tbl_PortalHaber_Banner" />
+            <End Role="tbl_PortalHaber_Banner_Site_Relation" EntitySet="tbl_PortalHaber_Banner_Site_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi" Association="Self.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi">
+            <End Role="tbl_PortalHaber_Banner_VeriGelmeTipi" EntitySet="tbl_PortalHaber_Banner_VeriGelmeTipi" />
+            <End Role="tbl_PortalHaber_Banner_Site_Relation" EntitySet="tbl_PortalHaber_Banner_Site_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site" Association="Self.FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site">
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+            <End Role="tbl_PortalHaber_Banner_Site_Relation" EntitySet="tbl_PortalHaber_Banner_Site_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori" Association="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori">
+            <End Role="tbl_PortalHaber_kategori" EntitySet="tbl_PortalHaber_kategori" />
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak" Association="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak">
+            <End Role="tbl_PortalHaber_Kaynak" EntitySet="tbl_PortalHaber_Kaynak" />
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site" Association="Self.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site">
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik" Association="Self.FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik">
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+            <End Role="tbl_PortalHaber_IP" EntitySet="tbl_PortalHaber_IP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik" Association="Self.FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik">
+            <End Role="tbl_PortalHaber_Icerik" EntitySet="tbl_PortalHaber_Icerik" />
+            <End Role="tbl_PortalHaber_OkunmaSayisi" EntitySet="tbl_PortalHaber_OkunmaSayisi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu" Association="Self.FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu">
+            <End Role="tbl_PortalHaber_Menu" EntitySet="tbl_PortalHaber_Menu" />
+            <End Role="tbl_PortalHaber_Menu_Tip_Relation" EntitySet="tbl_PortalHaber_Menu_Tip_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip" Association="Self.FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip">
+            <End Role="tbl_PortalHaber_Tip" EntitySet="tbl_PortalHaber_Tip" />
+            <End Role="tbl_PortalHaber_Menu_Tip_Relation" EntitySet="tbl_PortalHaber_Menu_Tip_Relation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site" Association="Self.FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site">
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+            <End Role="tbl_PortalHaber_PopulerHaberler_Zaman" EntitySet="tbl_PortalHaber_PopulerHaberler_Zaman" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu" Association="Self.FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu">
+            <End Role="tbl_PortalHaber_SiteGrubu" EntitySet="tbl_PortalHaber_SiteGrubu" />
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site" Association="Self.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site">
+            <End Role="tbl_PortalHaber_Site" EntitySet="tbl_PortalHaber_Site" />
+            <End Role="tbl_PortalHaber_YazarSiteRelation" EntitySet="tbl_PortalHaber_YazarSiteRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu" Association="Self.FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu">
+            <End Role="tbl_PortalHaber_SiteGrubu" EntitySet="tbl_PortalHaber_SiteGrubu" />
+            <End Role="tbl_PortalHaber_YazarParaAyar" EntitySet="tbl_PortalHaber_YazarParaAyar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip" Association="Self.FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip">
+            <End Role="tbl_PortalHaber_Tip" EntitySet="tbl_PortalHaber_Tip" />
+            <End Role="tbl_PortalHaber_Yazar" EntitySet="tbl_PortalHaber_Yazar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar" Association="Self.FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar">
+            <End Role="tbl_PortalHaber_Yazar" EntitySet="tbl_PortalHaber_Yazar" />
+            <End Role="tbl_PortalHaber_YazarParaTalep" EntitySet="tbl_PortalHaber_YazarParaTalep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar" Association="Self.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar">
+            <End Role="tbl_PortalHaber_Yazar" EntitySet="tbl_PortalHaber_Yazar" />
+            <End Role="tbl_PortalHaber_YazarSiteRelation" EntitySet="tbl_PortalHaber_YazarSiteRelation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB090928093827ModelStoreContainer" CdmEntityContainer="DB090928093827Entities">
+          <EntitySetMapping Name="tbl_PortalHaber_Banner">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Banner">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Banner">
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Banner_Site_Relation">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Banner_Site_Relation">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Banner_Site_Relation">
+                <ScalarProperty Name="SB_Id" ColumnName="SB_Id" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="BannerId" ColumnName="BannerId" />
+                <ScalarProperty Name="BTId" ColumnName="BTId" />
+                <ScalarProperty Name="BannerCount" ColumnName="BannerCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Banner_VeriGelmeTipi">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Banner_VeriGelmeTipi">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Banner_VeriGelmeTipi">
+                <ScalarProperty Name="BT_Id" ColumnName="BT_Id" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Icerik">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Icerik">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Icerik">
+                <ScalarProperty Name="HaberId" ColumnName="HaberId" />
+                <ScalarProperty Name="HaberBaslik" ColumnName="HaberBaslik" />
+                <ScalarProperty Name="HaberAciklama" ColumnName="HaberAciklama" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="HaberUrl" ColumnName="HaberUrl" />
+                <ScalarProperty Name="KaynakId" ColumnName="KaynakId" />
+                <ScalarProperty Name="Site_Id" ColumnName="Site_Id" />
+                <ScalarProperty Name="Onay_Tarih" ColumnName="Onay_Tarih" />
+                <ScalarProperty Name="Haber_Resim" ColumnName="Haber_Resim" />
+                <ScalarProperty Name="Onay" ColumnName="Onay" />
+                <ScalarProperty Name="Banner_Tip" ColumnName="Banner_Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Icerik2">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Icerik2">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Icerik2">
+                <ScalarProperty Name="HDid" ColumnName="HDid" />
+                <ScalarProperty Name="HaberMetni" ColumnName="HaberMetni" />
+                <ScalarProperty Name="Etiketler" ColumnName="Etiketler" />
+                <ScalarProperty Name="YazarId" ColumnName="YazarId" />
+                <ScalarProperty Name="HaberId" ColumnName="HaberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_IP">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_IP">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_IP">
+                <ScalarProperty Name="IP_ID" ColumnName="IP_ID" />
+                <ScalarProperty Name="Haber_Id" ColumnName="Haber_Id" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_kategori">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_kategori">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_kategori">
+                <ScalarProperty Name="Kid" ColumnName="Kid" />
+                <ScalarProperty Name="KName" ColumnName="KName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Kaynak">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Kaynak">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Kaynak">
+                <ScalarProperty Name="KaynakId" ColumnName="KaynakId" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Menu">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Menu">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MenuAciklama" ColumnName="MenuAciklama" />
+                <ScalarProperty Name="MenuLink" ColumnName="MenuLink" />
+                <ScalarProperty Name="Sıra" ColumnName="Sıra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Menu_Tip_Relation">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Menu_Tip_Relation">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Menu_Tip_Relation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipId" ColumnName="TipId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_OkunmaSayisi">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_OkunmaSayisi">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_OkunmaSayisi">
+                <ScalarProperty Name="OS_Id" ColumnName="OS_Id" />
+                <ScalarProperty Name="Haber_ID" ColumnName="Haber_ID" />
+                <ScalarProperty Name="OkunmaSayisi" ColumnName="OkunmaSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_PopulerHaberler_Zaman">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_PopulerHaberler_Zaman">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_PopulerHaberler_Zaman">
+                <ScalarProperty Name="PHZ_Id" ColumnName="PHZ_Id" />
+                <ScalarProperty Name="Zaman" ColumnName="Zaman" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Site">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Site">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Site">
+                <ScalarProperty Name="Site_Id" ColumnName="Site_Id" />
+                <ScalarProperty Name="Site_Adi" ColumnName="Site_Adi" />
+                <ScalarProperty Name="Site_Grubu" ColumnName="Site_Grubu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_SiteGrubu">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_SiteGrubu">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_SiteGrubu">
+                <ScalarProperty Name="Site_Grup_Id" ColumnName="Site_Grup_Id" />
+                <ScalarProperty Name="Site_Grup_Aciklama" ColumnName="Site_Grup_Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Tip">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Tip">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Tip">
+                <ScalarProperty Name="Tip_Id" ColumnName="Tip_Id" />
+                <ScalarProperty Name="Tip_Adi" ColumnName="Tip_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_Yazar">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_Yazar">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_Yazar">
+                <ScalarProperty Name="YazarId" ColumnName="YazarId" />
+                <ScalarProperty Name="YName" ColumnName="YName" />
+                <ScalarProperty Name="Tipi" ColumnName="Tipi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="EPosta" ColumnName="EPosta" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_YazarParaAyar">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_YazarParaAyar">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_YazarParaAyar">
+                <ScalarProperty Name="YPid" ColumnName="YPid" />
+                <ScalarProperty Name="Para" ColumnName="Para" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="SiteGrupId" ColumnName="SiteGrupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_YazarParaTalep">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_YazarParaTalep">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_YazarParaTalep">
+                <ScalarProperty Name="pt_id" ColumnName="pt_id" />
+                <ScalarProperty Name="Yazar_Id" ColumnName="Yazar_Id" />
+                <ScalarProperty Name="Site_Grup_Id" ColumnName="Site_Grup_Id" />
+                <ScalarProperty Name="Talep_Tarihi" ColumnName="Talep_Tarihi" />
+                <ScalarProperty Name="Talep_Miktar" ColumnName="Talep_Miktar" />
+                <ScalarProperty Name="Onay_Tarihi" ColumnName="Onay_Tarihi" />
+                <ScalarProperty Name="Onay_Miktar" ColumnName="Onay_Miktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PortalHaber_YazarSiteRelation">
+            <EntityTypeMapping TypeName="DB090928093827Model.tbl_PortalHaber_YazarSiteRelation">
+              <MappingFragment StoreEntitySet="tbl_PortalHaber_YazarSiteRelation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="YazarId" ColumnName="YazarId" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VWBANNERs">
+            <EntityTypeMapping TypeName="DB090928093827Model.VWBANNER">
+              <MappingFragment StoreEntitySet="VWBANNER">
+                <ScalarProperty Name="SbId" ColumnName="SbId" />
+                <ScalarProperty Name="SiteAdi" ColumnName="SiteAdi" />
+                <ScalarProperty Name="BannerAdi" ColumnName="BannerAdi" />
+                <ScalarProperty Name="BannerAdet" ColumnName="BannerAdet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VWYHABERLISTs">
+            <EntityTypeMapping TypeName="DB090928093827Model.VWYHABERLIST">
+              <MappingFragment StoreEntitySet="VWYHABERLIST">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="EPosta" ColumnName="EPosta" />
+                <ScalarProperty Name="HaberBaslik" ColumnName="HaberBaslik" />
+                <ScalarProperty Name="HaberAciklama" ColumnName="HaberAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

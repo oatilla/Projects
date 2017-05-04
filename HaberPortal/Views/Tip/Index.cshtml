@@ -1,0 +1,34 @@
+﻿@model IEnumerable<HaberPortal.Models.tbl_PortalHaber_Tip>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tip_Adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tip_Adi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Tip_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Tip_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Tip_Id })
+        </td>
+    </tr>
+}
+
+</table>

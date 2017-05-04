@@ -1,0 +1,35 @@
+﻿@model HaberPortal.Models.tbl_PortalHaber_Menu_Tip_Relation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_PortalHaber_Menu_Tip_Relation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_PortalHaber_Menu.MenuAciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_PortalHaber_Menu.MenuAciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_PortalHaber_Tip.Tip_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_PortalHaber_Tip.Tip_Adi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -81,6 +81,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -197,9 +199,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BannerController.cs" />
+    <Compile Include="Controllers\Banner_Site_RelationController.cs" />
+    <Compile Include="Controllers\Banner_VeriGelmeTipiController.cs" />
     <Compile Include="Controllers\DBOperation.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IPController.cs" />
+    <Compile Include="Controllers\kategoriController.cs" />
+    <Compile Include="Controllers\KaynakController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\Menu_Tip_RelationController.cs" />
+    <Compile Include="Controllers\PopulerHaberler_ZamanController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\SiteGrubuController.cs" />
+    <Compile Include="Controllers\TipController.cs" />
+    <Compile Include="Controllers\YazarController.cs" />
+    <Compile Include="Controllers\YazarParaAyarController.cs" />
+    <Compile Include="Controllers\YazarParaTalepController.cs" />
+    <Compile Include="Controllers\YazarSiteRelationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,13 +229,86 @@
     <Compile Include="Models\ForgotPassword.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Manage.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Manage.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ListTable.cs" />
+    <Compile Include="Models\ModelHaberPortal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelHaberPortal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelHaberPortal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelHaberPortal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelHaberPortal.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Banner.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Banner_Site_Relation.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Banner_VeriGelmeTipi.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Icerik.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Icerik2.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_IP.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_kategori.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Kaynak.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Menu.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Menu_Tip_Relation.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_OkunmaSayisi.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_PopulerHaberler_Zaman.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Site.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_SiteGrubu.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Tip.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_Yazar.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_YazarParaAyar.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_YazarParaTalep.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PortalHaber_YazarSiteRelation.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWBANNER.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWYHABERLIST.cs">
+      <DependentUpon>ModelHaberPortal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -242,6 +333,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\back_pick_2.jpg" />
+    <Content Include="Models\ModelHaberPortal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelHaberPortal.edmx</DependentUpon>
+      <LastGenOutput>ModelHaberPortal.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelHaberPortal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelHaberPortal.edmx</DependentUpon>
+      <LastGenOutput>ModelHaberPortal.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\etiket.js" />
     <Content Include="Scripts\app.min.js" />
     <Content Include="Scripts\bootstrap-tagsinput.js" />
@@ -250,11 +351,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Models\Manage.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Manage.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="fonts\summernote.eot" />
     <Content Include="fonts\summernote.ttf" />
@@ -270,6 +366,13 @@
     <Content Include="fonts\ionicons.woff" />
     <Content Include="Content\font\summernote.ttf" />
     <Content Include="Content\font\summernote.woff" />
+    <EntityDeploy Include="Models\ModelHaberPortal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelHaberPortal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelHaberPortal.edmx.diagram">
+      <DependentUpon>ModelHaberPortal.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Scripts\ckeditor.js" />
@@ -326,6 +429,86 @@
     <Content Include="Views\Home\AddEssay.cshtml" />
     <Content Include="Views\Home\EssayList.cshtml" />
     <Content Include="Views\Home\UpdateEssay.cshtml" />
+    <Content Include="Views\Tip\Create.cshtml" />
+    <Content Include="Views\Tip\Delete.cshtml" />
+    <Content Include="Views\Tip\Details.cshtml" />
+    <Content Include="Views\Tip\Edit.cshtml" />
+    <Content Include="Views\Tip\Index.cshtml" />
+    <Content Include="Views\Menu\Create.cshtml" />
+    <Content Include="Views\Menu\Delete.cshtml" />
+    <Content Include="Views\Menu\Details.cshtml" />
+    <Content Include="Views\Menu\Edit.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu_Tip_Relation\Create.cshtml" />
+    <Content Include="Views\Menu_Tip_Relation\Delete.cshtml" />
+    <Content Include="Views\Menu_Tip_Relation\Details.cshtml" />
+    <Content Include="Views\Menu_Tip_Relation\Edit.cshtml" />
+    <Content Include="Views\Menu_Tip_Relation\Index.cshtml" />
+    <Content Include="Views\Yazar\Create.cshtml" />
+    <Content Include="Views\Yazar\Delete.cshtml" />
+    <Content Include="Views\Yazar\Details.cshtml" />
+    <Content Include="Views\Yazar\Edit.cshtml" />
+    <Content Include="Views\Yazar\Index.cshtml" />
+    <Content Include="Views\YazarParaAyar\Create.cshtml" />
+    <Content Include="Views\YazarParaAyar\Delete.cshtml" />
+    <Content Include="Views\YazarParaAyar\Details.cshtml" />
+    <Content Include="Views\YazarParaAyar\Edit.cshtml" />
+    <Content Include="Views\YazarParaAyar\Index.cshtml" />
+    <Content Include="Views\Banner\Create.cshtml" />
+    <Content Include="Views\Banner\Delete.cshtml" />
+    <Content Include="Views\Banner\Details.cshtml" />
+    <Content Include="Views\Banner\Edit.cshtml" />
+    <Content Include="Views\Banner\Index.cshtml" />
+    <Content Include="Views\Banner_Site_Relation\Create.cshtml" />
+    <Content Include="Views\Banner_Site_Relation\Delete.cshtml" />
+    <Content Include="Views\Banner_Site_Relation\Details.cshtml" />
+    <Content Include="Views\Banner_Site_Relation\Edit.cshtml" />
+    <Content Include="Views\Banner_Site_Relation\Index.cshtml" />
+    <Content Include="Views\Banner_VeriGelmeTipi\Create.cshtml" />
+    <Content Include="Views\Banner_VeriGelmeTipi\Delete.cshtml" />
+    <Content Include="Views\Banner_VeriGelmeTipi\Details.cshtml" />
+    <Content Include="Views\Banner_VeriGelmeTipi\Edit.cshtml" />
+    <Content Include="Views\Banner_VeriGelmeTipi\Index.cshtml" />
+    <Content Include="Views\IP\Create.cshtml" />
+    <Content Include="Views\IP\Delete.cshtml" />
+    <Content Include="Views\IP\Details.cshtml" />
+    <Content Include="Views\IP\Edit.cshtml" />
+    <Content Include="Views\IP\Index.cshtml" />
+    <Content Include="Views\kategori\Create.cshtml" />
+    <Content Include="Views\kategori\Delete.cshtml" />
+    <Content Include="Views\kategori\Details.cshtml" />
+    <Content Include="Views\kategori\Edit.cshtml" />
+    <Content Include="Views\kategori\Index.cshtml" />
+    <Content Include="Views\Kaynak\Create.cshtml" />
+    <Content Include="Views\Kaynak\Delete.cshtml" />
+    <Content Include="Views\Kaynak\Details.cshtml" />
+    <Content Include="Views\Kaynak\Edit.cshtml" />
+    <Content Include="Views\Kaynak\Index.cshtml" />
+    <Content Include="Views\PopulerHaberler_Zaman\Create.cshtml" />
+    <Content Include="Views\PopulerHaberler_Zaman\Delete.cshtml" />
+    <Content Include="Views\PopulerHaberler_Zaman\Details.cshtml" />
+    <Content Include="Views\PopulerHaberler_Zaman\Edit.cshtml" />
+    <Content Include="Views\PopulerHaberler_Zaman\Index.cshtml" />
+    <Content Include="Views\YazarParaTalep\Create.cshtml" />
+    <Content Include="Views\YazarParaTalep\Delete.cshtml" />
+    <Content Include="Views\YazarParaTalep\Details.cshtml" />
+    <Content Include="Views\YazarParaTalep\Edit.cshtml" />
+    <Content Include="Views\YazarParaTalep\Index.cshtml" />
+    <Content Include="Views\YazarSiteRelation\Create.cshtml" />
+    <Content Include="Views\YazarSiteRelation\Delete.cshtml" />
+    <Content Include="Views\YazarSiteRelation\Details.cshtml" />
+    <Content Include="Views\YazarSiteRelation\Edit.cshtml" />
+    <Content Include="Views\YazarSiteRelation\Index.cshtml" />
+    <Content Include="Views\SiteGrubu\Create.cshtml" />
+    <Content Include="Views\SiteGrubu\Delete.cshtml" />
+    <Content Include="Views\SiteGrubu\Details.cshtml" />
+    <Content Include="Views\SiteGrubu\Edit.cshtml" />
+    <Content Include="Views\SiteGrubu\Index.cshtml" />
+    <Content Include="Views\Site\Create.cshtml" />
+    <Content Include="Views\Site\Delete.cshtml" />
+    <Content Include="Views\Site\Details.cshtml" />
+    <Content Include="Views\Site\Edit.cshtml" />
+    <Content Include="Views\Site\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,11 +525,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Models\Manage.dbml.layout">
-      <DependentUpon>Manage.dbml</DependentUpon>
-    </None>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

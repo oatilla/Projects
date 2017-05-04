@@ -1,0 +1,58 @@
+﻿@model IEnumerable<HaberPortal.Models.tbl_PortalHaber_Yazar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.YName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EPosta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_PortalHaber_Tip.Tip_Adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.YName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sifre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EPosta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Resim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_PortalHaber_Tip.Tip_Adi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.YazarId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.YazarId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.YazarId })
+        </td>
+    </tr>
+}
+
+</table>

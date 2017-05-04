@@ -1,0 +1,52 @@
+﻿@model IEnumerable<HaberPortal.Models.tbl_PortalHaber_Banner_Site_Relation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BannerCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_PortalHaber_Banner.BannerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_PortalHaber_Banner_VeriGelmeTipi.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_PortalHaber_Site.Site_Adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BannerCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_PortalHaber_Banner.BannerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_PortalHaber_Banner_VeriGelmeTipi.Adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_PortalHaber_Site.Site_Adi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SB_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SB_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SB_Id })
+        </td>
+    </tr>
+}
+
+</table>

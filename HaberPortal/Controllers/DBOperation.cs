@@ -12,11 +12,12 @@ namespace HaberPortal.Controllers
 {
     public class DbOperation
     {
-
+        DB090928093827Entities context = new DB090928093827Entities();
         public List<HaberModel> GetEssayList()
         {
-            ManageDataContext context = new ManageDataContext();
-            context.Connection.Open();
+            //ManageDataContext context = new ManageDataContext();
+            //context.Connection.Open();
+            
             var list = context.VWYHABERLISTs.ToList();
 
             var tempList = list.Select(item => new HaberModel
@@ -27,20 +28,20 @@ namespace HaberPortal.Controllers
                 HaberAciklama = item.HaberAciklama
             }).ToList();
 
-            context.Connection.Close();
-            context.Connection.Dispose();
+            //context.Connection.Close();
+            //context.Connection.Dispose();
             return tempList;
         }
 
         public EssayModel FillREssayModelFordUpdate(EssayModel essayModel, int id)
         {
-            var context = new ManageDataContext();
-            context.Connection.Open();
+            //var context = new ManageDataContext();
+            //context.Connection.Open();
             //var icerik = context.tbl_PortalHaber_Iceriks.FirstOrDefault(u => u.HaberId == id);
 
 
-            var icerikall = (from icerik in context.tbl_PortalHaber_Iceriks
-                             join icerik2 in context.tbl_PortalHaber_Icerik2s
+            var icerikall = (from icerik in context.tbl_PortalHaber_Icerik
+                             join icerik2 in context.tbl_PortalHaber_Icerik2
                              on icerik.HaberId equals icerik2.HaberId
                              select new
                              {
@@ -60,10 +61,10 @@ namespace HaberPortal.Controllers
                                  icerik2.YazarId,
                              }).FirstOrDefault(u => u.HaberId == id);
 
-            context.Connection.Close();
+            //context.Connection.Close();
 
 
-            context.Connection.Close();
+            //context.Connection.Close();
             if (icerikall != null)
             {
                 essayModel.Baslik = icerikall.HaberBaslik;
@@ -84,11 +85,11 @@ namespace HaberPortal.Controllers
         public bool CheckUser(string email, string password)
         {
             var isUser = false;
-            ManageDataContext context = new ManageDataContext();
-            context.Connection.Open();
-            var result = context.tbl_PortalHaber_Yazars.FirstOrDefault(u => u.EPosta == email && u.Sifre == password);
-            context.Connection.Close();
-            context.Dispose();
+            //ManageDataContext context = new ManageDataContext();
+            //context.Connection.Open();
+            var result = context.tbl_PortalHaber_Yazar.FirstOrDefault(u => u.EPosta == email && u.Sifre == password);
+            //context.Connection.Close();
+            //context.Dispose();
             isUser = result != null;
             return isUser;
         }
@@ -96,10 +97,10 @@ namespace HaberPortal.Controllers
         public Boolean IsEmailInSystem(string email)
         {
             var isEmail = false;
-            ManageDataContext context = new ManageDataContext();
-            context.Connection.Open();
-            var result = context.tbl_PortalHaber_Yazars.FirstOrDefault(u => u.EPosta == email);
-            context.Connection.Close();
+            //ManageDataContext context = new ManageDataContext();
+            //context.Connection.Open();
+            var result = context.tbl_PortalHaber_Yazar.FirstOrDefault(u => u.EPosta == email);
+            //context.Connection.Close();
             context.Dispose();
             isEmail = result != null;
             return isEmail;
@@ -110,11 +111,11 @@ namespace HaberPortal.Controllers
             var result = false;
             try
             {
-                var context = new ManageDataContext();
-                context.Connection.Open();
-                var tblIcerik = context.tbl_PortalHaber_Iceriks.FirstOrDefault(u => u.HaberId == id);
-                var tblIcerik2 = context.tbl_PortalHaber_Icerik2s.FirstOrDefault(u => u.HaberId == id);
-                var user = context.tbl_PortalHaber_Yazars.FirstOrDefault(u => u.EPosta == useremail);
+                //var context = new ManageDataContext();
+                //context.Connection.Open();
+                var tblIcerik = context.tbl_PortalHaber_Icerik.FirstOrDefault(u => u.HaberId == id);
+                var tblIcerik2 = context.tbl_PortalHaber_Icerik2.FirstOrDefault(u => u.HaberId == id);
+                var user = context.tbl_PortalHaber_Yazar.FirstOrDefault(u => u.EPosta == useremail);
 
                 if (tblIcerik != null)
                 {
@@ -128,19 +129,19 @@ namespace HaberPortal.Controllers
                     tblIcerik.HaberAciklama = model.Aciklama;
                     tblIcerik.HaberBaslik = model.Baslik;
 
+                   
                     if (tblIcerik2 != null)
                     {
                         tblIcerik2.Etiketler = model.Hastags;
                         tblIcerik2.HaberMetni = model.EssayContent;
                         if (user != null) tblIcerik2.YazarId = user.YazarId;
                     }
-
-
-                    context.SubmitChanges();
+                    context.SaveChanges();
+                    //context.SubmitChanges();
                     result = true;
 
-                    context.Connection.Close();
-                    context.Dispose();
+                    //context.Connection.Close();
+                    //context.Dispose();
                 }
 
             }
@@ -169,12 +170,13 @@ namespace HaberPortal.Controllers
             icerik.Onay = false;
             icerik.HaberId = model.BannerId;
 
-            var context = new ManageDataContext();
-            context.Connection.Open();
-            context.tbl_PortalHaber_Iceriks.InsertOnSubmit(icerik);
-            context.SubmitChanges();
+            //var context = new ManageDataContext();
+            //context.Connection.Open();
+            context.tbl_PortalHaber_Icerik.Add(icerik);
+            context.SaveChanges();
+            //context.SubmitChanges();
 
-            var tblPortalHaberIcerik = context.tbl_PortalHaber_Iceriks.OrderByDescending(p => p.HaberId).FirstOrDefault();
+            var tblPortalHaberIcerik = context.tbl_PortalHaber_Icerik.OrderByDescending(p => p.HaberId).FirstOrDefault();
             if (tblPortalHaberIcerik != null)
             {
                 var haberId = tblPortalHaberIcerik.HaberId;
@@ -183,15 +185,16 @@ namespace HaberPortal.Controllers
                 icerik2.HaberMetni = model.EssayContent;
                 icerik2.HaberId = haberId;
 
-                var yazar = context.tbl_PortalHaber_Yazars.FirstOrDefault(u => u.EPosta == model.UserEmail);
+                var yazar = context.tbl_PortalHaber_Yazar.FirstOrDefault(u => u.EPosta == model.UserEmail);
                 icerik2.YazarId = yazar.YazarId;
 
-                context.tbl_PortalHaber_Icerik2s.InsertOnSubmit(icerik2);
-                context.SubmitChanges();
+                context.tbl_PortalHaber_Icerik2.Add(icerik2);
+                context.SaveChanges();
+                //context.SubmitChanges();
             }
 
-            context.Connection.Close();
-            context.Connection.Dispose();
+            //context.Connection.Close();
+            //context.Connection.Dispose();
 
             return true;
         }
@@ -199,9 +202,9 @@ namespace HaberPortal.Controllers
         public List<SelectListItem> GetKategoriList()
         {
             var list = new List<SelectListItem>();
-            ManageDataContext context = new ManageDataContext();
-            context.Connection.Open();
-            var tempList = context.tbl_PortalHaber_kategoris.ToList();
+            //ManageDataContext context = new ManageDataContext();
+            //context.Connection.Open();
+            var tempList = context.tbl_PortalHaber_kategori.ToList();
             foreach (var item in tempList)
             {
                 var one = new SelectListItem() { Text = item.KName, Value = item.Kid.ToString() };
@@ -215,9 +218,9 @@ namespace HaberPortal.Controllers
         public List<SelectListItem> GetKaynakList()
         {
             var list = new List<SelectListItem>();
-            ManageDataContext context = new ManageDataContext();
-            context.Connection.Open();
-            var tempList = context.tbl_PortalHaber_Kaynaks.ToList();
+            //ManageDataContext context = new ManageDataContext();
+            //context.Connection.Open();
+            var tempList = context.tbl_PortalHaber_Kaynak.ToList();
             foreach (var item in tempList)
             {
                 var one = new SelectListItem() { Text = item.Adi, Value = item.KaynakId.ToString() };
@@ -230,9 +233,9 @@ namespace HaberPortal.Controllers
         public List<SelectListItem> GetSiteList()
         {
             var list = new List<SelectListItem>();
-            ManageDataContext context = new ManageDataContext();
-            context.Connection.Open();
-            var tempList = context.tbl_PortalHaber_Sites.ToList();
+            //ManageDataContext context = new ManageDataContext();
+            //context.Connection.Open();
+            var tempList = context.tbl_PortalHaber_Site.ToList();
             foreach (var item in tempList)
             {
                 var one = new SelectListItem() { Text = item.Site_Adi, Value = item.Site_Id.ToString() };
@@ -245,8 +248,8 @@ namespace HaberPortal.Controllers
         public List<SelectListItem> GetBannerList()
         {
             var list = new List<SelectListItem>();
-            ManageDataContext context = new ManageDataContext();
-            context.Connection.Open();
+            //ManageDataContext context = new ManageDataContext();
+            //context.Connection.Open();
             var tempList = context.VWBANNERs.ToList();
             foreach (var item in tempList)
             {

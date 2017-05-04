@@ -82,11 +82,37 @@
                 </div>
 
                 <ul class="sidebar-menu">
+                    @*@{
+                        Html.RenderAction("Index", "Menu");
+
+                    }
+                    @model List<HaberPortal.Models.tbl_PortalHaber_Menu>
+
+                    @foreach (var item in Model)
+                    {
+                        <li class="active"><a href="#"><i class="fa fa-plus"></i> <span>Menu</span></a></li>
+                    }*@
 
                     <li class="active"><a href="@Url.Action("AddEssay","Home")"><i class="fa fa-plus"></i> <span>Yazı Ekle</span></a></li>
                     <li><a href="@Url.Action("EssayList","Home")"><i class="fa fa-link"></i> <span>Yazılarım</span></a></li>
                     @*<li><a href="#"><i class="fa fa-link"></i> <span>Hesabım</span></a></li>
                         <li><a href="#"><i class="fa fa-user"></i> <span>Profilim</span></a></li>*@
+                    <li class="active"> <a href="~/Menu/Index"> <i class="fa fa-link"></i> <span>Menuler</span></a></li>
+                    <li class="active"> <a href="~/Tip/Index"> <i class="fa fa-link"></i> <span>Kullanıcı Tipi</span></a></li>
+                    <li class="active"> <a href="~/Menu_Tip_Relation/Index"> <i class="fa fa-link"></i> <span>Menu Tip İlişkisi</span></a></li>
+
+                    <li class="active"> <a href="~/SiteGrubu/Index"> <i class="fa fa-link"></i> <span>Site Grupları</span></a></li>
+                    <li class="active"> <a href="~/Site/Index"> <i class="fa fa-link"></i> <span>Siteler</span></a></li>
+                    <li class="active"> <a href="~/Kategori/Index"> <i class="fa fa-link"></i> <span>Kategorler</span></a></li>
+                    <li class="active"> <a href="~/Yazar/Index"> <i class="fa fa-link"></i> <span>Yazarlar</span></a></li>
+                    <li class="active"> <a href="~/Kaynak/Index"> <i class="fa fa-link"></i> <span>Kaynaklar</span></a></li>
+                    <li class="active"> <a href="~/YazarParaAyar/Index"> <i class="fa fa-link"></i> <span>Yazar Ücretleri</span></a></li>
+                    <li class="active"> <a href="~/YazarSiteRelation/Index"> <i class="fa fa-link"></i> <span>Yazar Site Bağlantıları</span></a></li>
+                    <li class="active"> <a href="~/Banner/Index"> <i class="fa fa-link"></i> <span>Bannerlar</span></a></li>
+                    <li class="active"> <a href="~/Banner_VeriGelmeTipi/Index"> <i class="fa fa-link"></i> <span>Banner Veri Gelme Tipleri</span></a></li>
+                    <li class="active"> <a href="~/Banner_Site_Relation/Index"> <i class="fa fa-link"></i> <span>Banner Site Bağlantıları</span></a></li>
+
+
                 </ul>
 
                 <!-- /.sidebar-menu -->

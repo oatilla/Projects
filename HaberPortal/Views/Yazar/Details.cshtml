@@ -1,0 +1,59 @@
+﻿@model HaberPortal.Models.tbl_PortalHaber_Yazar
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_PortalHaber_Yazar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.YName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sifre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sifre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EPosta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EPosta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_PortalHaber_Tip.Tip_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_PortalHaber_Tip.Tip_Adi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.YazarId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

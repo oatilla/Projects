@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4aa8aeea898847c7a5e8fae99272cd23" Name="Diagram1">
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Banner" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Banner_Site_Relation" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Banner_VeriGelmeTipi" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Icerik" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Icerik2" Width="1.5" PointX="10.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_IP" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_kategori" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Kaynak" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Menu" Width="1.5" PointX="5.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Menu_Tip_Relation" Width="1.5" PointX="8" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_OkunmaSayisi" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_PopulerHaberler_Zaman" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Site" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_SiteGrubu" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Tip" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_Yazar" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_YazarParaAyar" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_YazarParaTalep" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.tbl_PortalHaber_YazarSiteRelation" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.VWBANNER" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB090928093827Model.VWYHABERLIST" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Banner_Site_Relation_tbl_PortalHaber_Banner_VeriGelmeTipi" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_SiteAyr_Bnr_tbl_PortalHaber_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Kaynak" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Icerik_tbl_PortalHaber_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_IP_tbl_PortalHaber_Icerik" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_OkunmaSayisi_tbl_PortalHaber_Icerik" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Rol_Menu_Relation_tbl_PortalHaber_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Menu_Tip_Relation_tbl_PortalHaber_Tip" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_PopulerHaberler_Zaman_tbl_PortalHaber_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Site_tbl_PortalHaber_SiteGrubu" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_YazarParaAyar_tbl_PortalHaber_SiteGrubu" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_Yazar_tbl_PortalHaber_Tip" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_YazarParaTalep_tbl_PortalHaber_Yazar" ManuallyRouted="false" />
+        <AssociationConnector Association="DB090928093827Model.FK_tbl_PortalHaber_YazarSiteRelation_tbl_PortalHaber_Yazar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

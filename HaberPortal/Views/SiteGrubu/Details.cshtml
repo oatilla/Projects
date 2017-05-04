@@ -1,0 +1,27 @@
+﻿@model HaberPortal.Models.tbl_PortalHaber_SiteGrubu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_PortalHaber_SiteGrubu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Site_Grup_Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Site_Grup_Aciklama)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Site_Grup_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

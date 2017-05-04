@@ -1,0 +1,46 @@
+﻿@model IEnumerable<HaberPortal.Models.tbl_PortalHaber_YazarParaAyar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Para)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteGrupId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Para)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarih)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteGrupId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.YPid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.YPid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.YPid })
+        </td>
+    </tr>
+}
+
+</table>

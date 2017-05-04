@@ -1,0 +1,64 @@
+﻿@model IEnumerable<HaberPortal.Models.tbl_PortalHaber_YazarParaTalep>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Site_Grup_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Talep_Tarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Talep_Miktar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Onay_Tarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Onay_Miktar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_PortalHaber_Yazar.YName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Site_Grup_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Talep_Tarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Talep_Miktar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Onay_Tarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Onay_Miktar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_PortalHaber_Yazar.YName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.pt_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.pt_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.pt_id })
+        </td>
+    </tr>
+}
+
+</table>
